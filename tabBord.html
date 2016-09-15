@@ -2,7 +2,7 @@
 <head>
 	<title>Challenge yourself with web technologies!</title>
 	<meta charset= "utf-8">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
 	<meta name="viewport" content="width=divice-width, initial-scale=1.0">
 </head>
 <body class="body">
@@ -18,16 +18,32 @@
     		<button class="button">Test rapide</button>
 		</form>
 		<form action="examen1.html">
-			<button class="button">Examen</button>
+			
+		
+		<select class="domainChoice">
+			<option value = "html">HTML</option>
+			<option value = "css">CSS</option>
+			<option value = "javascript">JavaScript</option>
+		</select>
+		<select class="examNumber">
+			<option value = "quatre">4</option>
+			<option value = "six">6</option>
+			<option value = "huit">8</option>
+		</select>
+		<button class="button" href="examen1.html">Examen</button>
 		</form>
-		<section>
-			<h1 class="bigTitle">Statistiques</h1>
 			<section>
-				<h1 class="smallTitle">Pourcentage de réussite</h1>
-				<h1 class="smallTitle">Moyenne des examens</h1>
-				<h1 class="smallTitle">Notes des examens</h1>
+				<h1>Statistiques</h1>
+				<p>
+					Pourcentage de réussite: 50% </br>
+					Moyenne des examens: 70/100 </br>
+					Notes des examens: 
+					<ul>
+						<li> Examen1: 60/100</li>
+						<li> Examen2: 90/100</li>
+					</ul>
+				</p>
 			</section>
-		</section>
 	</div>
 	<footer>
 		<p>&copy; copyright 2016, Hana Ben Arab (1691212) & Fazil Messaoud(1605802)</p>
