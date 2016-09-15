@@ -1,0 +1,54 @@
+body{
+	background-color: black;
+	background-image: url("../img/bg2.jpg");
+	font-size: 87.5%; /*the basic font size is 14px */
+	color: white;
+	text-align: left;
+	line-height: 1.5;
+}
+a{
+	text-decoration: none;
+}
+.body{
+	margin:0 auto;
+	with: 70%;
+}
+.mainHeader img{
+	width: 30%;
+	height:30%;
+	margin:2% 0;
+
+}
+.mainHeader nav{
+	background-color: #32CD32;
+	height: 40px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+
+}
+.mainHeader nav ul{
+	list-style: none;
+	margin :0 auto;
+}
+.mainHeader nav ul li{
+	float:left;
+	display:inline;
+
+}
+.mainHeader nav a:link, .mainHeader nav a:visited{
+	color:white;
+	display: inline-block;
+	padding: 10px;
+	font-size: 100%;
+}
+.mainHeader nav a:hover, .mainHeader nav a:active{
+	background-color: black;
+
+}
+.body mainContent button {
+	background-color: black;
+	width:40px;
+	height:30px;
+	font-size: 100%;
+}
