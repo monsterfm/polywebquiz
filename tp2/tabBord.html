@@ -1,0 +1,75 @@
+<!DOCTYPE <html>
+<head>
+	<title>Apprenez le web par des QUIZ!</title>
+	<meta charset= "utf-8">
+	<link rel="stylesheet" type="text/css" href="css/tabBord.css">
+	<meta name="viewport" content="width=divice-width, initial-scale=1.0">
+</head>
+<body class="body">
+	<header class="mainHeader">
+		<nav><ul>
+			<li><a href="index.html">Accueil</a></li>
+			<li><a href="tabBord.html">Tableau de bord</a></li>
+			<li><a href="instructions.html">Instructions</a></li>
+		</ul></nav>
+	</header>
+	<main class="mainContent">
+		<section class ="testrapide">
+			<h1>Test rapide</h1>
+			<form action="testRapide1.html">
+	    		<button class="button">Test rapide</button>
+			</form>
+		</section>
+		<section class="examen">
+			<h1>Examen</h1>
+			<form action="examen1.html">
+				<select class="domainChoice">
+					<option value = "html">HTML</option>
+					<option value = "css">CSS</option>
+					<option value = "javascript">JavaScript</option>
+				</select>
+				<select class="examNumber">
+					<option value = "deux">2</option>
+					<option value = "quatre">4</option>
+					<option value = "six">6</option>
+					<option value = "huit">8</option>
+				</select>
+				<button class="button" href="examen1.html">Examen</button>
+			</form>
+		</section>
+		<section class="stat">
+			<h1>Statistiques</h1>
+			<p>
+				Pourcentage de réussite: 50% </br>
+				Moyenne des examens: 70/100 </br>
+				Notes des examens: 
+				<ul>
+					<li> Examen1: 80/100</li>
+					<li> Examen2: 100/100</li>
+				</ul>
+			</p>
+			
+			<!-- link for details button -->
+			<a href="#detailsBox"><input type="button" class="button" value="Details"/></a> 
+			<!-- link for click to return dashboard-->
+				 <a id="detailsBox" href="tabBord.html" class="outside">		
+					 <div class="modal">
+						<p>
+							Pourcentage de réussite: 50% </br>
+				Moyenne des examens: 70/100 </br>
+				Notes des examens: 
+				<ul>
+					<li> Examen1: 80/100</li>
+					<li> Examen2: 100/100</li>
+				</ul>
+						</p>
+					</div> 
+				</a>  
+			
+		</section>
+	</main>
+	<footer class="footer">
+		<p>&copy; copyright 2016, Hana Ben Arab (1691212) & Fazil Messaoud(1605802)</p>
+	</footer>
+</body>
+</html>
