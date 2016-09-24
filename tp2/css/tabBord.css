@@ -25,9 +25,15 @@
  *
  */
 
-.examen select {
- 
+.examen select, .examen option {
+
+ font-size: 15px;
+ font-family: Arial;
+ border-radius: 5px;
+ background: #dbc58c;
+ text-align: center;
 }
+
 /**
  *
  * buttons
@@ -35,7 +41,7 @@
  */
 
 .button{
-   border: none;
+    border: none;
     padding: 6px 4px;
     text-align: center;
     text-decoration: none;
@@ -45,7 +51,7 @@
     margin: 4px 2px;
     background: #dbc58c;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 /**
  *

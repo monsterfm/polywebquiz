@@ -10,12 +10,7 @@
  */
 
 body{
-	/*background-image: url("../img/plancher.png");*/
 	background-color: #E3E0D7;
-	/*background-position: center left;
-	background-repeat: repeat;
-	background-attachment: fixed;
-	background-size:  auto;*/
 	font-size: 120%; /*the basic font size is 14px */
 	font-family: Arial,'Lucida Sans Unicode';
 	color: #3B1600;
@@ -41,7 +36,6 @@ a{
 	width:30%;
 	height:auto;
 	margin:2% 0;
-	transition: transform .2s ease-in-out;
 }
 .mainHeader nav{
 	background-color: #C27F91;
@@ -58,32 +52,29 @@ a{
 	list-style: none;
 	margin:0 auto;
 }
-.mainHeader nav ul li{
+.mainHeader li{
 	float:left;
 	display:inline;
+}
+.mainHeader a{
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 }
 .mainHeader nav a:link, .mainHeader nav a:visited{
 	color:#FFF;
 	display: inline-block;
 	padding: 10px 25px;
 	height:20px;
-}
-.mainHeader nav a:hover,mainHeader nav a:active,.mainHeader nav .defaultLink a:link,.mainHeader nav .defaultLink a:visited{
-	background-color: #77A07E;
-}
-.mainHeader nav ul li a{
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-}
 
-/**
-
-	TODO:
-	- current nav should have background-color
-	- 
-
- */
+}
+nav li a:hover
+{   
+		background-color: #77A07E;
+}
+nav li.active a{
+    background-color: #77A07E;
+}
 
  /**
   *
@@ -97,16 +88,9 @@ a{
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	background-color: #C27F91;
-/*	position: relative;
-  height: 40px;
-  clear: both;  
-  margin:20% 0;*/
-    position: absolute;
-    bottom: 0;
-    height: 20px;
-    width: 100%;
+    height: 40px;
+    margin: 2% auto;
+    color:white;
+    text-align: center;
+}
 
-}
-.footer > p {
-	padding: 10% 0;
-}
