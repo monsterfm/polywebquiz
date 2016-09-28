@@ -70,10 +70,16 @@ a{
 }
 nav li a:hover
 {   
-		background-color: #77A07E;
+	background-color: #77A07E;
 }
 nav li.active a{
     background-color: #77A07E;
+}
+
+.mainContent img{
+	float: right;
+	width:10%;
+	height:auto;
 }
 
  /**
