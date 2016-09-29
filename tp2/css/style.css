@@ -1,7 +1,7 @@
 /*===================================================
 = General look of the website: applicable for all pages=
 ===================================================*/
-
+@import url(https://fonts.googleapis.com/css?family=Indie+Flower);
 
 /**
  *
@@ -12,7 +12,8 @@
 body{
 	background-color: #E3E0D7;
 	font-size: 120%; /*the basic font size is 14px */
-	font-family: Arial,'Lucida Sans Unicode';
+	/*font-family: Arial,'Lucida Sans Unicode';*/
+	font-family: 'Indie Flower';
 	color: #3B1600;
 	text-align: left;
 	line-height: 1.5;
@@ -106,7 +107,7 @@ nav li.active a{
     text-decoration: none;
     display: inline-block;
     font-size: 18px;
-    font-family: Arial;
+    font-family: 'Indie Flower';
     margin: 4px 2px;
     background: #dbc58c;
     cursor: pointer;
