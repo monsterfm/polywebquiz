@@ -8,7 +8,7 @@
 
 
 .mainContent .testrapide,.mainContent .examen, .mainContent .statistiques {
-  display:inline-block;
+  
   border-radius: 5px;
   background: #77A07E;
   width: 300px;
@@ -17,6 +17,7 @@
   vertical-align: middle;
   padding: 10px;
   margin: 15px; 
+  display:inline-block;
 
 }
 /**
@@ -32,27 +33,10 @@
  border-radius: 5px;
  background: #dbc58c;
  text-align: center;
+
 }
 
-/**
- *
- * buttons
- *
- */
 
-.button{
-    border: none;
-    padding: 6px 4px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 18px;
-    font-family: Arial;
-    margin: 4px 2px;
-    background: #dbc58c;
-    cursor: pointer;
-    border-radius: 5px;
-}
 /**
  *
  * modal for details
@@ -116,3 +100,4 @@
   {
     padding:30px;
   }
+ 

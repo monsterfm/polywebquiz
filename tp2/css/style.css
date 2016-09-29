@@ -32,7 +32,7 @@ a{
  *
  */
 
-.mainHeader img{
+#logo{
 	width:30%;
 	height:auto;
 	margin:2% 0;
@@ -76,11 +76,11 @@ nav li.active a{
     background-color: #77A07E;
 }
 
-.mainContent img{
+/*.mainContent img{
 	float: right;
 	width:10%;
 	height:auto;
-}
+}*/
 
 .mainContent .stat{
 	display:inline-block;
@@ -92,6 +92,36 @@ nav li.active a{
 	text-align: center;
 	padding: 10px;
 	margin: 15px; 
+}
+/**
+ *
+ * buttons
+ *
+ */
+
+.button{
+    border: none;
+    padding: 6px 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    font-family: Arial;
+    margin: 4px 2px;
+    background: #dbc58c;
+    cursor: pointer;
+    border-radius: 5px;
+}
+/**
+ *
+ * input
+ *
+ */
+span{
+
+display:block;
+line-height: 3;
+
 }
 
  /**
@@ -112,3 +142,56 @@ nav li.active a{
     text-align: center;
 }
 
+.domain{
+	/*style de question*/
+	
+}
+form{
+  display:inline-block;
+  margin-right: 60px;
+
+}
+
+	
+#termineExam, #voeux{
+	text-align: center;
+	font-size: 150%;
+	font-weight: bold;
+	
+
+}
+
+.currentScore{
+	text-align: right;
+	font-size: 100%;
+	font-weight: bold;
+
+}
+/**
+ *
+ * why doesn't work?
+ *
+ */
+
+form > .buttonreturn{
+	border: none;
+    padding: 6px 4px;
+    text-align: right;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: Arial;
+    margin: 4px 2px;
+    background: #dbc58c;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+#instructions{
+	float:right;
+	width:300px;
+	height:300px;
+}
+.textinstructions{
+	text-align: justify;
+	padding:10px 25px;
+}
