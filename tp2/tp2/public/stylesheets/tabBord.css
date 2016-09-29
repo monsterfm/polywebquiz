@@ -1,0 +1,103 @@
+@import url("style.css");
+
+/**
+ *
+ * different blocks in the dashboard
+ *
+ */
+
+
+.mainContent .testrapide,.mainContent .examen, .mainContent .statistiques {
+  
+  border-radius: 5px;
+  background: #77A07E;
+  width: 300px;
+  border: 1px solid #3B1600;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+  margin: 15px; 
+  display:inline-block;
+
+}
+/**
+ *
+ * dropdown list exam topic
+ *
+ */
+
+.examen select, .examen option {
+
+ font-size: 15px;
+ font-family: 'Indie Flower';
+ border-radius: 5px;
+ background: #dbc58c;
+ text-align: center;
+
+}
+
+
+/**
+ *
+ * modal for details
+ *
+ */
+ #detailsBox
+  { 
+    width:100%;
+    height:100%;
+    position:fixed;
+    /*z-index:2;*/
+    
+  }
+
+  .outside
+  {
+    display:none;
+    position: fixed;
+   /* margin:0px 0px;*/
+    top:0px;
+    left:0px;
+    /* black background opacity =0.8 */
+    background-color:black;
+    background: rgba(0,0,0,0.8);
+    width:50%;
+    height:40%;
+    /*z-index:1;*/
+    text-decoration:none;
+    outline:none;
+  }
+  
+  .outside:target
+  {
+    display:block;
+  }
+  
+  .modal
+  {
+    position:fixed;
+    
+    top:30%;
+    bottom:30%;
+    left:25%;
+    right:25%;
+    width:50%;
+    height:40%;
+    background-color:#dbc58c;
+    /*z-index:3;*/
+    text-align:center;
+    border-radius:5px;
+    color:#000;
+    border: 1px solid black;
+  }
+  
+  .outside:hover
+  {
+    cursor:default;
+  }
+  
+  .modal p 
+  {
+    padding:30px;
+  }
+ 
