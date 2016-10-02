@@ -3,17 +3,7 @@ block stylecss
   link(rel='stylesheet', type='text/css', href='stylesheets/style.css')
 block content
   main.mainContent
-        section.stat
-          h1 Statistiques
-          p
-            | Pourcentage de réussite: 50% 
-            br
-            | 				Moyenne des examens: 70/100 
-            br
-            | 				Notes des examens: 
-            ul
-              li  Examen1: 80/100
-              li  Examen2: 100/100
+        include statBox
         h1.domain Domaine: HTML
         section
           h1.enonce Question1: Que signifie HTML?

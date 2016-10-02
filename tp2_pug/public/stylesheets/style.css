@@ -62,12 +62,18 @@ a{
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 }
-.mainHeader nav a:link, .mainHeader nav a:visited{
+.mainHeader nav a:link{
 	color:#FFF;
 	display: inline-block;
 	padding: 10px 25px;
 	height:20px;
 
+}
+.mainHeader nav a:visited{
+	color:#FFF;
+	display: inline-block;
+	padding: 10px 25px;
+	height:20px;
 }
 nav li a:hover
 {   
