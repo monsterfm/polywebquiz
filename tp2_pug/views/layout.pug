@@ -1,5 +1,9 @@
 doctype html
 html
+  block link
+    -var selected = 'Index'; //default
+
+  -var menu = { 'Index': '/index', 'Tableau de bord': '/tabBord', 'Instructions': '/instructions' };
   head
     title Apprenez le web par des QUIZ!
     meta(charset='utf-8')
@@ -11,12 +15,14 @@ html
       block logo
       nav
         ul
-          li
-            a(href='index') Accueil
-          li
-            a(href='tabBord') Tableau de bord
-          li
-            a(href='instructions') Instructions
+          each val, key in menu
+            li
+              if selected === key
+                li.active
+                  a.selected(href=val, title=key)= key
+              else
+                li
+                  a(href=val, title=key)= key
       block content
     footer.footer
       p © copyright 2016, Hana Ben Arab (1691212) & Fazil Messaoud(1605802)
