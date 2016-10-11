@@ -1,0 +1,30 @@
+extends layout
+block link
+  -var selected = 'Tableau de bord';
+block stylecss
+  link(rel='stylesheet', type='text/css', href='stylesheets/style.css')
+  script(type='text/javascript', src='/javascripts/examen.js') 
+block content
+  main.mainContent
+
+    include statBox
+    section
+      h1.domain Domaine: HTML
+      section
+        h1.enonce
+          | Question1/2: Les éléments inline sont normalement affichés sans démarrer une nouvelle ligne.
+        form
+          span
+            input(type='checkbox', name='choix1', value='1')
+            |  Vrai
+          span
+            input(type='checkbox', name='choix2', value='2')
+            |  Faux
+    form(action='tabBord')
+      button.button Retour
+    form(action='examen2')
+      button.button Suivant
+    form(action='resultatExamen')
+      button.button Abandonner
+    section.currentScore
+      | Note Courante : 0/100
