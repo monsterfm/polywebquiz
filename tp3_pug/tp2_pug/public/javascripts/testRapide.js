@@ -2,7 +2,7 @@
 
  $( document ).ready(function() {
 
-var $domaine = $('#domain'); // pour changer le domaine
+var $domain = $('#domain'); // pour changer le domaine
 var $enonce = $('#enonce'); // pour changer la question
 var $choices = $('#choices'); // pour changer les choix
 
@@ -15,16 +15,19 @@ $('#suivant').click(function(){
             console.log(data);
                 //generate random number between 1 and 10
                var randomNum = Math.floor((Math.random() * 10) + 1);
-                $domaine.text(data[randomNum].domaine);
+                $domain.text(data[randomNum].domaine);
                 $enonce.text(data[randomNum].question);
                 for(i in data[randomNum].choices){
-                     ch = $("<input id = "+"choices" + "type="+"checkbox"+ "name="+"choix1" +"value="+i+">");
+                    // ch = $("<input id = "+"choices" + " type="+"checkbox"+ " name="+"choix1" +" value="+i+">");
                     $(choices).append('<input type="checkbox" name="something" id="'+i+'" />' + data[randomNum].choices[i] + '<br/>');
+                    
 
                 }
-                 $(choices).text('');  
+                
     	}
+
     });
+     $(choices).text('');  
  });
 
 });
