@@ -23,11 +23,13 @@ $('#suivant').click(function(){
                     
 
                 }
+
                 
     	}
+        
 
     });
-     $(choices).text('');  
+      $(choices).text(''); 
  });
 
 });

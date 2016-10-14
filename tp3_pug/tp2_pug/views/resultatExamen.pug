@@ -1,11 +1,11 @@
 extends layout
 block stylecss
   link(rel='stylesheet', type='text/css', href='stylesheets/style.css')
+  script(type='text/javascript', src='https://code.jquery.com/jquery-3.1.1.js') 
+  script(type='text/javascript', src='/javascripts/resultatExamen.js')
+  script(type='text/javascript', src='/javascripts/storage.js') 
 block content
   main.mainContent
         section#termineExam
-          | Félicitaions! Examen terminé! 
-          br
-          |  Note finale: 0/100
         form(action='tabBord')
           button.buttonreturn Retour

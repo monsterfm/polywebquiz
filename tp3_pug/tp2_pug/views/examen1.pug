@@ -3,7 +3,10 @@ block link
   -var selected = 'Tableau de bord';
 block stylecss
   link(rel='stylesheet', type='text/css', href='stylesheets/style.css')
+  script(type='text/javascript', src='https://code.jquery.com/jquery-3.1.1.js') 
   script(type='text/javascript', src='/javascripts/examen.js') 
+  script(type='text/javascript', src='/javascripts/storage.js') 
+  //script(type='text/javascript', src='/javascripts/resultatExamen.js') 
 block content
   main.mainContent
 
@@ -24,7 +27,7 @@ block content
       button.button Retour
     form(action='examen2')
       button.button Suivant
-    form(action='resultatExamen')
-      button.button Abandonner
+    form#abandonForm(name='abandan' action='resultatExamen')
+      button#abandonBtn.button Abandonner
     section.currentScore
       | Note Courante : 0/100
