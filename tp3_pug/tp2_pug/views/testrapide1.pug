@@ -13,6 +13,13 @@ block content
         section
           h1#enonce.enonce
           form#choices
+            span
+              input#choices( draggable = "true" type='checkbox', name='choix1', value='1' ondragstart="drag(event)")
+              |  choice1
+
+          p#responsebox(ondrop="drop(event)" ondragover="allowDrop(event)")
+          | your response here
+
         form(action='tabBord')
           button.button Retour
         button#suivant.button Suivant

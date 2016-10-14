@@ -1,10 +1,15 @@
 
-
+// $.event.props.push('dataTransfer');
  $( document ).ready(function() {
 
 var $domain = $('#domain'); // pour changer le domaine
 var $enonce = $('#enonce'); // pour changer la question
 var $choices = $('#choices'); // pour changer les choix
+/**
+ *
+ * next question implementation
+ *
+ */
 
 $('#suivant').click(function(){
     $.ajax({
@@ -19,7 +24,7 @@ $('#suivant').click(function(){
                 $enonce.text(data[randomNum].question);
                 for(i in data[randomNum].choices){
                     // ch = $("<input id = "+"choices" + " type="+"checkbox"+ " name="+"choix1" +" value="+i+">");
-                    $(choices).append('<input type="checkbox" name="something" id="'+i+'" />' + data[randomNum].choices[i] + '<br/>');
+                    $(choices).append('<span draggable ="true"><input draggable ="true" type="checkbox" name="something" id="'+i+'" />' + data[randomNum].choices[i] + '</span>');
                     
 
                 }
@@ -32,4 +37,74 @@ $('#suivant').click(function(){
       $(choices).text(''); 
  });
 
+
+/**
+ *
+ * drag and drop
+ *
+ */
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

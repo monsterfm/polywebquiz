@@ -131,6 +131,9 @@ line-height: 3;
 
 }
 
+#responsebox{
+	border: 1px solid black;
+}
  /**
   *
   * footer
