@@ -4,8 +4,7 @@ block link
 block stylecss
   link(rel='stylesheet', type='text/css', href='stylesheets/style.css')
   script(type='text/javascript', src='https://code.jquery.com/jquery-3.1.1.js') 
-  script(type='text/javascript', src='/javascripts/testRapide.js') 
-
+  script(type='text/javascript', src='/javascripts/testRapide.js')
 block content
   main.mainContent
         include statBox
@@ -14,10 +13,11 @@ block content
           h1#enonce.enonce
           form#choices
             span
-              input#choices( draggable = "true" type='checkbox', name='choix1', value='1' ondragstart="drag(event)")
+              input#choix( draggable="true", type="checkbox", name="choix1", value="1", ondragstart="drag(event)")
               |  choice1
+          img#instructions(src='images/instruction2.png', draggable="true", ondragstart="drag(event)")
 
-          p#responsebox(ondrop="drop(event)" ondragover="allowDrop(event)")
+          p#responsebox(ondrop="drop(event)", ondragover="allowDrop(event)")
           | your response here
 
         form(action='tabBord')

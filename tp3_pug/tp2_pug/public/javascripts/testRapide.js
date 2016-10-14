@@ -36,28 +36,28 @@ $('#suivant').click(function(){
     });
       $(choices).text(''); 
  });
-
+});
 
 /**
  *
  * drag and drop
  *
  */
-function allowDrop(ev) {
+document.allowDrop = function(ev) {
     ev.preventDefault();
 }
 
-function drag(ev) {
+document.drag= function(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
 }
 
-function drop(ev) {
+document.drop= function(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
 }
 
-});
+
 
 
 
