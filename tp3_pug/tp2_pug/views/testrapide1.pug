@@ -15,7 +15,7 @@ block content
             span
               input#choix( draggable="true", type="checkbox", name="choix1", value="1", ondragstart="drag(event)")
               |  choice1
-          img#instructions(src='images/instruction2.png', draggable="true", ondragstart="drag(event)")
+          img#instructions(src='images/instruction2.png', draggable="true", ondragstart="drag(event)", ondragend="dragend(event)")
 
           p#responsebox(ondrop="drop(event)", ondragover="allowDrop(event)")
           | your response here
@@ -23,4 +23,4 @@ block content
         form(action='tabBord')
           button.button Retour
         button#suivant.button Suivant
-        section.currentScore Note courante: 0/100
+        section.currentScore 

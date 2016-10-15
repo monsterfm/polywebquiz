@@ -1,5 +1,7 @@
 
 // $.event.props.push('dataTransfer');
+var $correctAnswer;
+var $answerProposed;
  $( document ).ready(function() {
 
 var $domain = $('#domain'); // pour changer le domaine
@@ -14,7 +16,7 @@ var $choices = $('#choices'); // pour changer les choix
 $('#suivant').click(function(){
     $.ajax({
     	type:'GET',
-    	url: 'questions.json',
+    	url: 'questions.JSON',
     	dataType:'json',
     	success: function(data){
             console.log(data);
@@ -28,7 +30,7 @@ $('#suivant').click(function(){
                     
 
                 }
-
+                $correctAnswer=data[randomNum].Correctanswer;
                 
     	}
         
@@ -37,6 +39,32 @@ $('#suivant').click(function(){
       $(choices).text(''); 
  });
 });
+
+/**
+*
+* Mise a jours des stats
+*
+*/
+function updateStats(){
+
+}
+
+/**
+*
+* Affichage des stats courants
+*
+*/
+function displayStats(){
+    console.log("test");
+}
+
+document.dragend = function(ev) {
+    ev.preventDefault();
+    console.log($correctAnswer);
+    console.log($answerProposed);
+    document.getElementById("responsebox").style.borderColor="#FF0000" ;
+    
+}
 
 /**
  *
@@ -54,6 +82,7 @@ document.drag= function(ev) {
 document.drop= function(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
+    $answerProposed = data;
     ev.target.appendChild(document.getElementById(data));
 }
 
