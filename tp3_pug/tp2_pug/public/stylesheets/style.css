@@ -133,8 +133,8 @@ line-height: 3;
 
 #responsebox{
 	border: 1px solid black;
-	width: 550px;
-	height: 800px;
+	width: 500px;
+	height: 80px;
 	padding: 10px;
 }
  /**
@@ -174,7 +174,7 @@ form{
 
 }
 
-.currentScore{
+#currentScore{
 	text-align: right;
 	font-size: 100%;
 	font-weight: bold;

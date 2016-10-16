@@ -11,16 +11,11 @@ block content
         h1#domain.domain
         section
           h1#enonce.enonce
-          form#choices
-            span
-              input#choix( draggable="true", type="checkbox", name="choix1", value="1", ondragstart="drag(event)")
-              |  choice1
-          img#instructions(src='images/instruction2.png', draggable="true", ondragstart="drag(event)", ondragend="dragend(event)")
+          article#choices
 
           p#responsebox(ondrop="drop(event)", ondragover="allowDrop(event)")
-          | your response here
 
         form(action='tabBord')
           button.button Retour
         button#suivant.button Suivant
-        section.currentScore 
+        section#currentScore 
