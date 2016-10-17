@@ -3,30 +3,22 @@ block link
   -var selected = 'Tableau de bord';
 block stylecss
   link(rel='stylesheet', type='text/css', href='stylesheets/style.css')
-  script(type='text/javascript', src='https://code.jquery.com/jquery-3.1.1.js') 
-  script(type='text/javascript', src='/javascripts/examen.js') 
+  script(type='text/javascript', src='https://code.jquery.com/jquery-3.1.1.js')
+  script(type='text/javascript', src='/javascripts/tabBord.js')
+  script(type='text/javascript', src='/javascripts/examen.js')
   script(type='text/javascript', src='/javascripts/storage.js') 
-  //script(type='text/javascript', src='/javascripts/resultatExamen.js') 
 block content
   main.mainContent
 
     include statBox
     section
-      h1.domain Domaine: HTML
+      h1#domain.domain 
       section
-        h1.enonce
-          | Question1/2: Les éléments inline sont normalement affichés sans démarrer une nouvelle ligne.
-        form
-          span
-            input(type='checkbox', name='choix1', value='1')
-            |  Vrai
-          span
-            input(type='checkbox', name='choix2', value='2')
-            |  Faux
+        h1#enonce.enonce
+        form#choices
     form(action='tabBord')
       button.button Retour
-    form(action='examen2')
-      button.button Suivant
+    button#suivantExamen.button Suivant
     form#abandonForm(name='abandan' action='resultatExamen')
       button#abandonBtn.button Abandonner
     section.currentScore

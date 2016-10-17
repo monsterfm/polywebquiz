@@ -14,16 +14,11 @@ var router = express.Router();
 
 router.get('/testrapide1', function(req, res)
 {
-	// var RandomQuestion = db.getQuestionById(getRandom(10));
-	// res.render('testrapide1', {   title: 'Test rapide', q : RandomQuestion });
-	// console.log(RandomQuestion);
-	console.log('i am in ajax file');
+	
 });
 
 router.get('/examen1', function(req, res)
 {
-	// var RandomQuestion = db.getQuestionById(getRandom(getDBLength()));
-	// res.render('examen1', {   title: 'Examen', q : RandomQuestion });
-	// console.log(RandomQuestion);
+	
 });
 module.exports = router;

@@ -3,6 +3,9 @@ block link
   -var selected = 'Tableau de bord';
 block stylecss
   link(rel='stylesheet', type='text/css', href='stylesheets/tabBord.css')
+  script(type='text/javascript', src='https://code.jquery.com/jquery-3.1.1.js') 
+  script(type='text/javascript', src='/javascripts/storage.js') 
+  script(type='text/javascript', src='/javascripts/tabBord.js') 
 block content
   main.mainContent
       section.testrapide
@@ -12,16 +15,16 @@ block content
       section.examen
         h1 Examen
         form(action='examen1')
-          select.domainChoice
+          select#domainChoice.domainChoice
             option(value='html') HTML
             option(value='css') CSS
             option(value='javascript') JavaScript
-          select.examNumber
+          select#examNumber.examNumber
             option(value='deux') 2
             option(value='quatre') 4
             option(value='six') 6
             option(value='huit') 8
-          button.button(href='examen1') Examen
+          button#examenBtn.button(href='examen1') Examen
       section.statistiques
         h1 Statistiques
         p
