@@ -26,25 +26,17 @@ block content
           button#examenBtn.button Examen
       section.statistiques
         h1 Statistiques
-        p
-          | Pourcentage de réussite: 50% 
-          br
-          |         Moyenne des examens: 70/100 
+        p#stats
           br
         // link for details button
         a(href='#detailsBox')
-          input.button(type='button', value='Details')
+          input.button(type='button', value='Details', id='Details')
         // link for click to return dashboard
         #detailsBox.modal
-          p
-            | Pourcentage de réussite: 50% 
-            br
-            |         Moyenne des examens: 70/100 
-            br
+          p#textDetails
             |         Notes des examens: 
-            ul
-              li Examen1: 80/100 
-              li  Examen2: 100/100
+            ul#listeExams
+            script moyenneExamens();
         a.outside(href='#tabBord')
         br
         button#resetBtn.button Remise à zéro
