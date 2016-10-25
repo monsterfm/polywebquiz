@@ -1,0 +1,233 @@
+/*===================================================
+= General look of the website: applicable for all pages=
+===================================================*/
+@import url(https://fonts.googleapis.com/css?family=Indie+Flower);
+
+/**
+ *
+ * body 
+ *
+ */
+
+body{
+	background-color: #E3E0D7;
+	font-size: 120%; /*the basic font size is 14px */
+	/*font-family: Arial,'Lucida Sans Unicode';*/
+	font-family: 'Indie Flower';
+	color: #3B1600;
+	text-align: left;
+	line-height: 1.5;
+}
+
+.body{
+	margin: 0 auto;
+	width:90%;
+	clear: both;
+}
+a{
+	text-decoration: none;
+}
+/**
+ *
+ * Header & navigation bar
+ *
+ */
+
+#logo{
+	width:30%;
+	height:auto;
+	margin:2% 0;
+}
+.mainHeader nav{
+	background-color: #C27F91;
+	height:40px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	margin: 2% auto;
+	
+
+
+}
+.mainHeader nav ul{
+	list-style: none;
+	margin:0 auto;
+}
+.mainHeader li{
+	float:left;
+	display:inline;
+}
+.mainHeader a{
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+.mainHeader nav a:link{
+	color:#FFF;
+	display: inline-block;
+	padding: 10px 25px;
+	height:20px;
+
+}
+.mainHeader nav a:visited{
+	color:#FFF;
+	display: inline-block;
+	padding: 10px 25px;
+	height:20px;
+}
+nav li a:hover
+{   
+	background-color: #77A07E;
+}
+nav li.active a{
+    background-color: #77A07E;
+}
+
+/*.mainContent img{
+	float: right;
+	width:10%;
+	height:auto;
+}*/
+
+.mainContent .stat{
+	display:inline-block;
+	float: right;
+	border-radius: 5px;
+	background: #77A07E;
+	width: 300px;
+	border: 1px solid #3B1600;
+	text-align: center;
+	padding: 10px;
+	margin: 15px; 
+}
+
+#enonce{
+	font-size: 20px;
+}
+/**
+ *
+ * buttons
+ *
+ */
+
+.button{
+    border: none;
+    padding: 6px 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    font-family: 'Indie Flower';
+    margin: 4px 2px;
+    background: #dbc58c;
+    cursor: pointer;
+    border-radius: 5px;
+}
+/**
+ *
+ * input
+ *
+ */
+span{
+
+display:block;
+line-height: 3;
+
+}
+
+ /**
+  *
+  * footer
+  *
+  */
+ 
+.footer{
+	
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	background-color: #C27F91;
+    height: 40px;
+    margin: 2% auto;
+    color:white;
+    text-align: center;
+}
+
+.domain{
+	/*style de question*/
+	
+}
+form{
+  display:inline-block;
+  margin-right: 60px;
+
+}
+
+	
+#termineExam, #voeux{
+	text-align: center;
+	font-size: 150%;
+	font-weight: bold;
+	
+
+}
+
+.currentScore{
+	text-align: right;
+	font-size: 100%;
+	font-weight: bold;
+
+}
+/**
+ *
+ * why doesn't work?
+ *
+ */
+
+form > .buttonreturn{
+	border: none;
+    padding: 6px 4px;
+	position: absolute;
+    right: 100px;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: Arial;
+    margin: 4px 2px;
+    background: #dbc58c;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+#instructions{
+	float:right;
+	width:300px;
+	height:300px;
+}
+.textinstructions{
+	text-align: justify;
+	padding:10px 25px;
+}
+
+#choixreponses{
+	padding-left: 0;
+}
+.choix{
+	border: 1px solid black;
+	padding: 5px 20px 5px 0;
+
+
+}
+#reponse {
+    padding: 5px;
+    margin: 10px;
+    border: 5px solid black;
+    border-radius: 10px;
+    height:100px;
+    width:600px;
+    
+}
+
+
+.over {
+    box-shadow: 0 5px 5px #black;
+}

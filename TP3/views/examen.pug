@@ -1,0 +1,28 @@
+extends layout
+block link
+  -var selected = 'Tableau de bord';
+block stylecss
+  link(rel='stylesheet', type='text/css', href='stylesheets/style.css')
+  script(type='text/javascript', src='https://code.jquery.com/jquery-3.1.1.js')
+  script(type='text/javascript', src='/javascripts/examen.js')
+  script(type='text/javascript', src='/javascripts/statBox.js')
+block content
+  main.mainContent
+
+    include statBox
+    section#suivant
+      h1#domain.domain 
+        //I assume it is the last question
+      form#examenForm(action='/resultatExamen')
+        h1#enonce.enonce
+        ul#choixreponses.choixreponses
+        div#reponse
+        button#suivantBtn.button(type='submit' value='suivantBtn') Suivant
+    section#Retour
+      form(action='tabBord')
+        button.button Retour
+    section#Abandon
+      form(action='resultatExamen')
+        button#abandonnerBtn.button Abandonner
+    section.currentScore
+      | Note Courante : -- / --

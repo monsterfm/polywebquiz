@@ -1,0 +1,50 @@
+extends layout
+block link
+  -var selected = 'Tableau de bord';
+block stylecss
+  link(rel='stylesheet', type='text/css', href='stylesheets/tabBord.css')
+  script(type='text/javascript', src='https://code.jquery.com/jquery-3.1.1.js')
+  script(type='text/javascript', src='/javascripts/tabBord.js')
+block content
+  main.mainContent
+      section.testrapide
+        h1 Test rapide
+        form#testRapideBtnForm(action='/testrapide')
+          button#testRapideBtn.button Test rapide
+      section.examen
+        h1 Examen
+        form#examenFormBtn(action='/examen')
+          select#domainChoice.domainChoice
+            option(value='HTML') HTML
+            option(value='CSS') CSS
+            option(value='JavaScript') JavaScript
+          select#examNumber.examNumber
+            option(value='2') 2
+            option(value='4') 4
+            option(value='6') 6
+            option(value='8') 8
+          button#examenBtn.button Examen
+      section.statistiques
+        h1 Statistiques
+        p
+          | Pourcentage de réussite: 50% 
+          br
+          |         Moyenne des examens: 70/100 
+          br
+        // link for details button
+        a(href='#detailsBox')
+          input.button(type='button', value='Details')
+        // link for click to return dashboard
+        #detailsBox.modal
+          p
+            | Pourcentage de réussite: 50% 
+            br
+            |         Moyenne des examens: 70/100 
+            br
+            |         Notes des examens: 
+            ul
+              li Examen1: 80/100 
+              li  Examen2: 100/100
+        a.outside(href='#tabBord')
+        br
+        button#resetBtn.button Remise à zéro

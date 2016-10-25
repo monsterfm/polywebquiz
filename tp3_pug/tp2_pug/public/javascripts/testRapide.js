@@ -84,8 +84,8 @@ document.dragend = function(ev) {
     }else{
         document.getElementById("responsebox").style.borderColor="#FF0000";//Met la boite de reponse en rouge
     }
-    document.getElementById("currentScore").innerHTML="Score Courant:" + (($numberGoodAnswer/$totalNumberAnswer)*100) + "%";//Affiche le score courant
-    
+    //document.getElementById("currentScore").innerHTML="Score Courant:" + (($numberGoodAnswer/$totalNumberAnswer)*100) + "%";//Affiche le score courant
+    document.getElementById("currentScore").innerHTML="Score Courant:" + $numberGoodAnswer+"/" + $totalNumberAnswer;
     
 }
 

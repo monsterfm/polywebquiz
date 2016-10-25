@@ -9,12 +9,6 @@ router.get('/', function(req, res, next) {
 router.get('/index', function(req, res, next) {
   res.render('index');
 });
-
-/**
- *
- * 
- *
- */
  router.get('/tabBord', function(req, res, next) {
   res.render('tabBord');
 });

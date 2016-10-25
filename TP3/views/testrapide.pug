@@ -1,0 +1,24 @@
+extends layout
+block link
+  -var selected = 'Tableau de bord';
+block stylecss
+  link(rel='stylesheet', type='text/css', href='stylesheets/style.css')
+  script(type='text/javascript', src='https://code.jquery.com/jquery-3.1.1.js')
+  script(type='text/javascript', src='/javascripts/testrapide.js')
+  script(type='text/javascript', src='/javascripts/statBox.js')
+block content
+  main.mainContent
+        include statBox
+        h1#domain.domain
+        section#suivant
+          //les questions sont infinies
+          form#testForm(action='/testrapide')
+            h1#enonce.enonce 
+            ul#choixreponses.choixreponses
+            div#reponse.reponse
+            button#suivantBtn.button(type='submit',value='suivantBtn') Suivant
+        section#retour
+          form(action='tabBord')
+            button#retourBtn.button Retour
+        section.currentScore 
+          | Note Courante : -- / --

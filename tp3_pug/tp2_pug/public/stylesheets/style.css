@@ -9,6 +9,37 @@
  *
  */
 
+.bonne-reponse {
+    border: 1px solid #9ddda3;
+    background: linear-gradient(#fff, #9ddda3);
+}
+
+.mauvaise-reponse {
+    border: 1px solid #dd868c;
+    background: linear-gradient(#fff, #dd868c);
+}
+
+.reponse-container {
+    height: 4em;
+    padding: 5px;
+    border: 1px solid #ccd8dd;
+    box-shadow: 0 2px 2px #ccd8dd;
+    border-radius: 5px;
+}
+
+.bonne-reponse-container {
+    border: 1px solid #9ddda3;
+    box-shadow: 0 5px 5px #9ddda3;
+}
+
+.mauvaise-reponse-container {
+    border: 1px solid #dd868c;
+    box-shadow: 0 5px 5px #dd868c;
+}
+
+.drop-container-over {
+    box-shadow: 0 5px 5px #91b3dd;
+}
 body{
 	background-color: #E3E0D7;
 	font-size: 120%; /*the basic font size is 14px */

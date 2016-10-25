@@ -10,21 +10,21 @@ block content
   main.mainContent
       section.testrapide
         h1 Test rapide
-        form(action='testRapide1')
+        form#testForm(method ='post',action='/testRapide1')
           button.button Test rapide
       section.examen
         h1 Examen
-        form(action='examen1')
+        form#examForm(method ='post',action='/examen1')
           select#domainChoice.domainChoice
-            option(value='html') HTML
-            option(value='css') CSS
-            option(value='javascript') JavaScript
+            option(value='HTML') HTML
+            option(value='CSS') CSS
+            option(value='JavaScript') JavaScript
           select#examNumber.examNumber
-            option(value='deux') 2
-            option(value='quatre') 4
-            option(value='six') 6
-            option(value='huit') 8
-          button#examenBtn.button(href='examen1') Examen
+            option(value='2') 2
+            option(value='4') 4
+            option(value='6') 6
+            option(value='8') 8
+          button#examenBtn.button(type='submit', value='examenBtn') Examen
       section.statistiques
         h1 Statistiques
         p
@@ -47,3 +47,5 @@ block content
               li Examen1: 80/100 
               li  Examen2: 100/100
         a.outside(href='#tabBord')
+        br
+        button#reset.button Remise à zéro

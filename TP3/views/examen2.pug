@@ -1,0 +1,30 @@
+extends layout
+block link
+  -var selected = 'Tableau de bord';
+block stylecss
+  link(rel='stylesheet', type='text/css', href='stylesheets/style.css')
+block content
+  main.mainContent
+    include statBox
+    section
+      h1.domain Domaine: HTML
+      section
+        h1.enonce Question2/2: Quel élément HTML définit le titre du document?
+        form
+          span
+            input(type='checkbox', name='choix1', value='1')
+            |  head
+          span
+            input(type='checkbox', name='choix2', value='2')
+            |  meta
+          span
+            input(type='checkbox', name='choix3', value='3')
+            |  title
+    form(action='tabBord')
+      button.button Retour
+    form(action='resultatExamen')
+      button.button Suivant
+    form(action='resultatExamen')
+      button.button Abandonner
+    section.currentScore
+      | Note Courante : 0/100

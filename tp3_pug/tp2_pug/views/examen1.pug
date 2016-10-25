@@ -15,11 +15,15 @@ block content
       h1#domain.domain 
       section
         h1#enonce.enonce
-        form#choices
+        //go to resultatExamen when it is the last question
+        form#choices(method='post', action='/resultatExamen')
+          ul#reponses
+          button#suivantExamen.button(type='submit', value='suivantExamen',disabled) Suivant
     form(action='tabBord')
       button.button Retour
-    button#suivantExamen.button Suivant
-    form#abandonForm(name='abandan' action='resultatExamen')
+    form#abandonForm(name='abandan' action='/resultatExamen')
       button#abandonBtn.button Abandonner
+    div.reponse-container
     section.currentScore
       | Note Courante : 0/100
+  script(src='javascripts/examen.js')
