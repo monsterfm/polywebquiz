@@ -95,4 +95,15 @@
   {
     padding:30px;
   }
+  ul #listeExams{
+  width: 100%;
+  display: table;
+  table-layout: fixed; /* optional */
+}
+
+#listeExams li {
+  display: table-cell;
+  width: auto;
+  text-align: center;
+}
  

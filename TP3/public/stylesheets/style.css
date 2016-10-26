@@ -178,11 +178,7 @@ form{
 	font-weight: bold;
 
 }
-/**
- *
- * why doesn't work?
- *
- */
+
 
 form > .buttonreturn{
 	border: none;
@@ -230,4 +226,16 @@ form > .buttonreturn{
 
 .over {
     box-shadow: 0 5px 5px #black;
+}
+
+ul #listeExams{
+  width: 100%;
+  display: table;
+  table-layout: fixed; /* optional */
+}
+
+li #list {
+  display: table-cell;
+  width: auto;
+  text-align: center;
 }

@@ -1,5 +1,5 @@
 $(function() {
-    //nbre de questions effectuées
+
     var counter = sessionStorage.getItem('counter');
     var examNumber = sessionStorage.getItem('examNumber');
     var nbCorrectAnswers = sessionStorage.getItem('nbCorrectAnswers');
@@ -9,19 +9,17 @@ $(function() {
     addEntry();
 
     $('#termineExam').html(resultatMsg);
-    //est ce qu'on affiche le resultat % au nbre de questions effectuées ou le nbre de questions selectionnnes au depart?
-    //affichage des 4 messages possibles
     function displayResultScoreMsg(note){
       if(note>= 0 && note <25)
-        resultatMsg = " Très faible </br> Note finale: " + note +" %";
+        resultatMsg = " Très faible </br> Note finale: " + note.toFixed(2) +" %";
       if(note>= 25 && note < 50)
-       resultatMsg = " Faible </br> Note finale: " + note +" %";
+       resultatMsg = " Faible </br> Note finale: " + note.toFixed(2) +" %";
       
       if(note>= 50 && note < 75)
-        resultatMsg = " Bien </br> Note finale: "+ note +" %";       
+        resultatMsg = " Bien </br> Note finale: "+ note.toFixed(2) +" %";       
       
       if(note>= 75 && note <= 100)
-        resultatMsg= " Excellent </br> Note finale: " + note +" %";
+        resultatMsg= " Excellent </br> Note finale: " + note.toFixed(2) +" %";
       
 
   return resultatMsg ;

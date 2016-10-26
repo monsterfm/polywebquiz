@@ -12,15 +12,14 @@ block content
     include statBox
     section#suivant
       h1#domain.domain 
-        //I assume it is the last question
       form#examenForm(action='/resultatExamen')
         h1#enonce.enonce
         ul#choixreponses.choixreponses
         div#reponse
         button#suivantBtn.button(type='submit' value='suivantBtn') Suivant
     section#Retour
-      form(action='tabBord')
-        button.button Retour
+      form(action='/resultatExamen')
+        button#retourBtn.button Retour
     section#Abandon
       form(action='resultatExamen')
         button#abandonnerBtn.button Abandonner

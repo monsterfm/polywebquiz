@@ -78,12 +78,14 @@ $(function(){
 
     $('#abandonnerBtn').click(function(){ 
         sessionStorage.setItem('nbCorrectAnswers', 0);
-        
-       
-         sessionStorage.setItem('counter', sessionStorage.getItem('examNumber') + 1);
-         $('#examenForm').trigger('submit');
+         sessionStorage.setItem('counter', parseInt(sessionStorage.getItem('examNumber')) + 1);
+         $('#abandonForm').trigger('submit');
     });
-   
+     $('#retourBtn').click(function(){ 
+        sessionStorage.setItem('nbCorrectAnswers', 0);
+         sessionStorage.setItem('counter', parseInt(sessionStorage.getItem('examNumber')) + 1);
+         $('#retourForm').trigger('submit');
+    });
     function getRandomQuestionJS() {
             $.get('/ajax/questionJavaScript',function(data) {
                     correct = data.Correctanswer;

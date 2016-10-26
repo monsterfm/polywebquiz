@@ -28,6 +28,8 @@ block content
         h1 Statistiques
         p#stats
           br
+        p#statstest
+          br
         // link for details button
         a(href='#detailsBox')
           input.button(type='button', value='Details', id='Details')
@@ -36,7 +38,8 @@ block content
           p#textDetails
             |         Notes des examens: 
             ul#listeExams
-            script moyenneExamens();
+              li#list
+              script moyenneExamens();
         a.outside(href='#tabBord')
         br
         button#resetBtn.button Remise à zéro

@@ -1,15 +1,16 @@
 $(function(){
 
 
-    var bonneReponse = -2;
-    var reponseChoisie = -3;
+    var correct = -2;
+    var answer = -3;
+    var nbCorrectAnswersTotal = 0;
+    var totalCounter = 0;
 
     function handleDragStart(e) {
         e.dataTransfer.effectAllowed = 'move';
         e.dataTransfer.setData('text/html', $(this).html());
-        //reponseChoisie = $(this).data('value');
-        reponseChoisie = $(this).attr('value');
-        console.log(reponseChoisie)
+        answer = $(this).attr('value');
+        console.log(answer)
     }
 
     function handleDragOver(e) {
@@ -46,7 +47,7 @@ $(function(){
 
         $('[draggable]').attr('draggable', false);
 
-        if(reponseChoisie == bonneReponse) {
+        if(answer == correct) {
             var nbCorrectAnswers = parseInt(sessionStorage.getItem('nbCorrectAnswers') || 0) + 1;
             sessionStorage.setItem('nbCorrectAnswers', nbCorrectAnswers);
 
@@ -65,14 +66,12 @@ $(function(){
 
  function getRandomQuestion() {
         $.get('/ajax/question',function(data) {
-                bonneReponse = data.Correctanswer;
+                correct = data.Correctanswer;
                     var counter = parseInt(sessionStorage.getItem('counter') || 1);
 
                     $('#domain').text(data.domaine);
                     $('#enonce').text(data.question);
-                    //$('#choixreponses').html('');
                     for(i in data.choices){
-                        //var j = parseInt(i) + 1 ;
                       $('#choixreponses').append('<li class="choix" draggable="true" value="'+ parseInt(i) +'"'+'>'+ data.choices[i]+'</li><br><br>');
                     }
                     $('.choix').each(function() {
@@ -85,7 +84,6 @@ $(function(){
      
               getRandomQuestion();
 
-    //drag & drop
     $('#reponse').each(function() {
         this.addEventListener('dragenter', handleDragEnter, false);
         this.addEventListener('dragover', handleDragOver, false);
@@ -105,6 +103,25 @@ $(function(){
 
     });
     updateCurrentScoreTag();
+
+    $('#retourBtn').on('click',function(e) {
+            var nbCorrectAnswers = sessionStorage.getItem("nbCorrectAnswers");
+            var Counter = sessionStorage.getItem("counter");
+            if (localStorage.getItem("nbCorrectAnswersTotal") === null &&  localStorage.getItem("totalCounter") === null) {
+
+                localStorage.setItem("nbCorrectAnswersTotal",parseInt(nbCorrectAnswers));
+                localStorage.setItem("totalCounter", parseInt(Counter));
+            }
+            else{
+                
+                localStorage.setItem("nbCorrectAnswersTotal",parseInt(localStorage.getItem("nbCorrectAnswersTotal")) + parseInt(nbCorrectAnswers));
+                localStorage.setItem("totalCounter",parseInt(localStorage.getItem("totalCounter")) + parseInt(Counter));
+              
+            }
+
+    });
+
+
     function updateCurrentScoreTag(){
         var note = sessionStorage.getItem('nbCorrectAnswers');
         var counter = sessionStorage.getItem('counter');
