@@ -27,6 +27,13 @@ body{
 a{
 	text-decoration: none;
 }
+input:invalid {
+  border: 1px solid red;
+}
+/*A AJOUTER PEUT ETRE*/
+/*input:valid {
+  border: 1px solid green;
+}*/
 /**
  *
  * Header & navigation bar

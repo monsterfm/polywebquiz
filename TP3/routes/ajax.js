@@ -1,5 +1,6 @@
 
-
+var mongoose = require( 'mongoose' );
+var Question = mongoose.model( 'Question' );
 var express = require('express');
 var router = express.Router();
 var db = require('../database/questions.js');
@@ -34,4 +35,22 @@ router.get('/questionJavaScript',function(req, res, next) {
     res.json(db[randomQuestion]);
     
 });
+
+router.post('/ajouterQuestion',function ( req, res ){
+    
+    if(req.body.Domaine.length < 2 || req.body.Question < 2 || req.body.reponseCorrect < 2)
+        res.status(400).send('Veuillez entrer de bonnes valeurs dans les champs');
+    else{
+        new Question({
+            domaine    : req.body.Domaine,
+            question    : req.body.Question,
+            reponse_correcte    : req.body.reponseCorrect,
+            reponse_2    : req.body.reponse2,
+            reponse_3    : req.body.reponse3
+        }).save( function( err, todo, count ){
+            res.redirect( '/' );
+        });
+    }
+});
+
 module.exports = router;

@@ -1,0 +1,30 @@
+extends layout
+block link
+  -var selected = 'Ajouter question';
+block stylecss
+  link(rel='stylesheet', type='text/css', href='stylesheets/style.css')
+block content
+  main.mainContent
+    section#ajouter
+      form#ajouterForm(action='/ajax/ajouterQuestion' method="post" accept-charset="utf-8")
+        | Domaine: 
+        br
+        input#Domaine(type='text', name='Domaine', value='HTML', required)
+        br
+        | Question: 
+        br
+        input#Question(type='text', name='Question', required)
+        br
+        | Reponse correcte: 
+        br
+        input#reponseCorrect(type='text', name='reponseCorrect', required)
+        br
+        | Reponse 2: 
+        br
+        input#reponse2(type='text', name='reponse2', required)
+        br
+        | Reponse 3: 
+        br
+        input#reponse3(type='text', name='reponse3')
+        br
+        button#ajouterBtn.button(type='submit' value='ajouterQuestion') Ajouter

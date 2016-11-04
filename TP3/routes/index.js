@@ -29,6 +29,9 @@ router.get('/index', function(req, res, next) {
   router.get('/testrapide', function(req, res, next) {
   res.render('testrapide');
 });
+  router.get('/ajouterQuestion', function(req, res, next) {
+  res.render('ajouterQuestion');
+});
   router.get('/testRapide2', function(req, res, next) {
   res.render('testrapide2');
 });
