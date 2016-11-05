@@ -246,3 +246,27 @@ li #list {
   width: auto;
   text-align: center;
 }
+
+
+
+#ajouterForm input{
+	height:30px;
+	width:600px;
+	border:black;
+
+}
+#ajouterForm #reponseCorrect{
+	height:30px;
+	width:200px;
+	border:black;
+
+}
+#ajouterForm select, #ajouterForm option {
+
+ font-size: 15px;
+ font-family: 'Indie Flower';
+ border-radius: 5px;
+ background: #dbc58c;
+ text-align: center;
+
+}

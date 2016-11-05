@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
+var mongoose = require( 'mongoose' );
+var Question = mongoose.model( 'Question' );
+
 router.get('/', function(req, res, next) {
   res.render('index');
 });
@@ -35,4 +38,10 @@ router.get('/index', function(req, res, next) {
   router.get('/testRapide2', function(req, res, next) {
   res.render('testrapide2');
 });
+  router.get('/ajouterQuestion', function(req, res, next) {
+    res.render('ajouterQuestion');
+});
+
+
+
 module.exports = router;

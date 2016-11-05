@@ -3,28 +3,39 @@ block link
   -var selected = 'Ajouter question';
 block stylecss
   link(rel='stylesheet', type='text/css', href='stylesheets/style.css')
+  script(type='text/javascript', src='https://code.jquery.com/jquery-3.1.1.js')
+  script(src='javascripts/ajouterQuestion.js')
 block content
   main.mainContent
     section#ajouter
       form#ajouterForm(action='/ajax/ajouterQuestion' method="post" accept-charset="utf-8")
         | Domaine: 
         br
-        input#Domaine(type='text', name='Domaine', value='HTML', required)
+        select#domaine
+            option(value='HTML') HTML
+            option(value='CSS') CSS
+            option(value='JavaScript') JavaScript
         br
         | Question: 
         br
-        input#Question(type='text', name='Question', required)
+        input#Question(type='text' name='Question' required)
+        br
+        section#reponses
+            | Choix de réponse 1
+            br
+            input#reponse1(type='text' required)
+            br
+            | Choix de réponse 2
+            br
+            input#reponse2(type='text' required)
+            br
+            button#autreOption.button Ajouter un autre choix de réponses
+            br 
         br
         | Reponse correcte: 
         br
-        input#reponseCorrect(type='text', name='reponseCorrect', required)
+        //- TODO:ajouter controle utilisateur sur le numero de choix de rep entré
+        input#reponseCorrect(type='text' name='reponseCorrect' required)
         br
-        | Reponse 2: 
-        br
-        input#reponse2(type='text', name='reponse2', required)
-        br
-        | Reponse 3: 
-        br
-        input#reponse3(type='text', name='reponse3')
-        br
-        button#ajouterBtn.button(type='submit' value='ajouterQuestion') Ajouter
+        input#ajouterBtn.button(type='submit' value='Ajouter')
+    input#viderBtn.button(type='submit' value='Vider BD')

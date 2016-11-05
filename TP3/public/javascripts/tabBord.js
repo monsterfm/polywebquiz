@@ -22,6 +22,72 @@ function moyenneExamens(){
 
 
 $(function() {
+
+     //get number of js questions
+    function getNumberJSQuestions(){
+        $.ajax({
+                type: 'get',
+                url: "/ajax/nbreQuestionsJS",
+                dataType: "json",
+                //contentType: 'application/json',
+                success: function(data){ 
+                    
+                    console.log(data)
+                    
+                        $("#examNumber option").each(function(){
+                        if (parseInt($(this).val()) > data) {
+                            $(this).attr("disabled", true);
+                      }
+                    });
+
+                   
+                    
+                }
+                
+            });
+
+    }
+    // if($('#domainChoice').val() =="JavaScript")
+    //     getNumberJSQuestions()
+    // if($('#domainChoice').val() =="CSS")
+    //     getNumberCSSQuestions()
+    // if($('#domainChoice').val() =="HTML")
+    //     getNumberHTMLQuestions()
+
+      //get number of css questions
+    function getNumberCSSQuestions(){
+        $.ajax({
+                type: 'get',
+                url: "/ajax/nbreQuestionsCSS",
+                dataType: "json",
+                //contentType: 'application/json',
+                success: function(data){ 
+                    
+                    console.log(data)
+                    //return data;
+                    
+                }
+                
+            });
+
+    }
+       //get number of HTML questions
+    function getNumberHTMLQuestions(){
+        $.ajax({
+                type: 'get',
+                url: "/ajax/nbreQuestionsHTML",
+                dataType: "json",
+                //contentType: 'application/json',
+                success: function(data){ 
+                    
+                    console.log(data)
+                    return data;
+                    
+                }
+                
+            });
+
+    }
     /**
      *
      * test rapide
@@ -44,10 +110,11 @@ $(function() {
      *
      */
     
-    $('#examenFormBtn').click(function(){
+    $('#examenFormBtn').on('click',function(e){
+        //getNumberJSQuestions()
         var domainChoice= $('#domainChoice').val();
         var examNumber = $('#examNumber').val();
-
+        
         sessionStorage.clear();
 
         sessionStorage.setItem('domainChoice', domainChoice);
@@ -55,6 +122,7 @@ $(function() {
         sessionStorage.setItem('nbCorrectAnswers', 0);
 
          moyenneExamens();
+         //e.preventDefault();
     });
     /**
      *

@@ -13,17 +13,21 @@ block content
           button#testRapideBtn.button Test rapide
       section.examen
         h1 Examen
-        form#examenFormBtn(action='/examen')
-          select#domainChoice.domainChoice
+        form#examenFormBtn(action='/examen' method='get')
+          select#domainChoice.domainChoice(required)
             option(value='HTML') HTML
             option(value='CSS') CSS
             option(value='JavaScript') JavaScript
-          select#examNumber.examNumber
+          select#examNumber.examNumber(required)
+            option(value='1') 1
             option(value='2') 2
+            option(value='3') 3
             option(value='4') 4
+            option(value='5') 5
             option(value='6') 6
+            option(value='7') 7
             option(value='8') 8
-          button#examenBtn.button Examen
+          input#examenBtn.button(type='submit' value='Examen')
       section.statistiques
         h1 Statistiques
         p#stats

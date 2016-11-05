@@ -6,6 +6,8 @@ $(function(){
     var correct = -2;
     var answer = -3;
 
+    
+
     function handleDragStart(e) {
         e.dataTransfer.effectAllowed = 'move';
         e.dataTransfer.setData('text/html', $(this).html());
