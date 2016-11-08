@@ -2,9 +2,11 @@ $(function(){
 
 
     var correct = -2;
+    var idQuestion;
     var answer = -3;
     var nbCorrectAnswersTotal = 0;
     var totalCounter = 0;
+    var correctAnswer;
 
     function handleDragStart(e) {
         e.dataTransfer.effectAllowed = 'move';
@@ -46,8 +48,33 @@ $(function(){
         this.innerHTML = e.dataTransfer.getData('text/html');
 
         $('[draggable]').attr('draggable', false);
+        var bodyRequest={
+            reponse: answer,
+            idToFind: idQuestion
+        }
+        var data = JSON.stringify(bodyRequest);
+        $.ajax({
+                type: 'post',
+                url: "/ajax/getCorrectAnswer",
+                data: data,
+                dataType: "json",
+                contentType: 'application/json',
+                success: function(data){ 
+                    if(data==true)
+                        correctAnswer = true;
+                    else
+                        correctAnswer = false;
+                },
+                error: function(xhr, textStatus, error){
+                    console.log(xhr.statusText);
+                    console.log(textStatus);
+                    console.log(error)
+                    alert("something went wrong")
+                },
+                 async: false //IMPORTANT ICI
+            });
 
-        if(answer == correct) {
+        if(correctAnswer == true) {
             var nbCorrectAnswers = parseInt(sessionStorage.getItem('nbCorrectAnswers') || 0) + 1;
             sessionStorage.setItem('nbCorrectAnswers', nbCorrectAnswers);
 
@@ -66,7 +93,9 @@ $(function(){
 
  function getRandomQuestion() {
         $.get('/ajax/question',function(data) {
-                correct = data.Correctanswer;
+                //correct = data.Correctanswer;
+                idQuestion = data._id;
+                console.log(idQuestion)
                     var counter = parseInt(sessionStorage.getItem('counter') || 1);
 
                     $('#domain').text(data.domaine);
@@ -107,7 +136,7 @@ $(function(){
     $('#retourBtn').on('click',function(e) {
             var nbCorrectAnswers = sessionStorage.getItem("nbCorrectAnswers");
             var Counter = sessionStorage.getItem("counter");
-            if (localStorage.getItem("nbCorrectAnswersTotal") === null &&  localStorage.getItem("totalCounter") === null) {
+            /*if (localStorage.getItem("nbCorrectAnswersTotal") === null &&  localStorage.getItem("totalCounter") === null) {
 
                 localStorage.setItem("nbCorrectAnswersTotal",parseInt(nbCorrectAnswers));
                 localStorage.setItem("totalCounter", parseInt(Counter));
@@ -117,7 +146,29 @@ $(function(){
                 localStorage.setItem("nbCorrectAnswersTotal",parseInt(localStorage.getItem("nbCorrectAnswersTotal")) + parseInt(nbCorrectAnswers));
                 localStorage.setItem("totalCounter",parseInt(localStorage.getItem("totalCounter")) + parseInt(Counter));
               
+            }*/
+            var counters = {
+                countCorrectAnswer: nbCorrectAnswers,
+                countTotal: Counter
             }
+            var data = JSON.stringify(counters);
+            $.ajax({
+                type: 'post',
+                url: "/ajax/saveInDb",
+                data: data,
+                dataType: "json",
+                contentType: 'application/json',
+                success: function(data){ 
+                    $('.currentScore').text('Note courante :' + data.note +' / ' + data.counter);
+                },
+                error: function(xhr, textStatus, error){
+                    console.log(xhr.statusText);
+                    console.log(textStatus);
+                    console.log(error)
+                    alert("something went wrong")
+                },
+                 async: false //IMPORTANT ICI
+            });
 
     });
 
@@ -127,6 +178,7 @@ $(function(){
         var counter = sessionStorage.getItem('counter');
          $('.currentScore').text('Note courante :' + note +' / ' + counter);
          return 0;
+
     }
 
 

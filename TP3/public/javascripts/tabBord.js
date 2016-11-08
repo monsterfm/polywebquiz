@@ -1,5 +1,48 @@
 function moyenneExamens(){
-        var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
+    var moyenneExams=0;
+    var nbrQuestionRapide=0;
+    var nbrQuestionTotal=0;
+    $.ajax({
+                type: 'get',
+                url: "/ajax/resultsExams",
+                dataType: "json",
+                success: function(data){ 
+                    if(data == null || data.length == 0) 
+                        $('#stats').text("Aucun examens n'a encore ete fait!");
+                    else{
+                        for(i in data){
+                            moyenneExams=moyenneExams+((parseInt(data[i].nbCorrectAnswers)/parseInt(data[i].counter))*100);
+                        }
+                        moyenneExams=(moyenneExams/data.length);
+                        $('#stats').text("Moyenne des examens: " + moyenneExams.toFixed(2) +" %");
+                    }
+                    
+                        
+                }
+                
+            });
+
+
+    $.ajax({
+                type: 'get',
+                url: "/ajax/resultsTest",
+                dataType: "json",
+                success: function(data){ 
+                    if(data == null || data.length == 0) 
+                        $('#statstest').text("Statistiques test rapide : "+ 0 +"/ " + 0);
+                    else{
+                        for(i in data){
+                            nbrQuestionRapide=nbrQuestionRapide+(parseInt(data[i].nbCorrectAnswers));
+                            nbrQuestionTotal=nbrQuestionTotal+(parseInt(data[i].totalCounter));
+                        }
+                        $('#statstest').text("Statistiques test rapide : "+ nbrQuestionRapide +"/ " + nbrQuestionTotal);
+                    }
+                    
+                        
+                }
+                
+            });
+        /*var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
         var moyenneExams=0;
         if(existingEntries == null) 
             $('#stats').text("Aucun examens n'a encore ete fait!");
@@ -16,7 +59,9 @@ function moyenneExamens(){
         $('#statstest').text("Statistiques test rapide : "+ 0 +"/ " + 0);
       else
         $('#statstest').text("Statistiques test rapide : "+ localStorage.getItem("nbCorrectAnswersTotal") +"/ " + localStorage.getItem("totalCounter"));
-      return 0;  
+      return 0;  */
+
+
   }
 
 
@@ -138,7 +183,30 @@ $(function() {
     }); 
 
     $('#Details').click(function(){
-        var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
+        $.ajax({
+                type: 'get',
+                url: "/ajax/resultsExams",
+                dataType: "json",
+                success: function(data){ 
+                    if(data == null|| data.length == 0) 
+                        $('#textDetails').text("Aucun examens n'a encore ete fait!");
+                    else{
+                        console.log(data)
+                    for(i in data){
+                        var numeroExam=parseInt(i)+1;
+                        $('#listeExams').append("<li>Examen "+ numeroExam +" - ("+ data[i].domainChoice +") : " +data[i].nbCorrectAnswers + "/"
+                    +data[i].counter +"</li><br>");
+                    }
+                    }
+                    
+                }
+            });
+
+
+
+
+
+        /*var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
         if(existingEntries == null) 
             $('#textDetails').text("Aucun examens n'a encore ete fait!");
         else{
@@ -148,10 +216,10 @@ $(function() {
                     +existingEntries[i].nbQuestionsExamen +"</li><br>");
             }
         }
-    }); 
+    }); */
 
 
-    
+    });
 });
 
 

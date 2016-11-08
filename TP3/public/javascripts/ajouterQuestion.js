@@ -63,8 +63,8 @@ $(function(){
         	e.preventDefault();
         }
         else{
-        	var data = JSON.stringify(questionAajouter)
-        	console.log(data)
+        	var data = JSON.stringify(questionAajouter);
+        	console.log(data);
 	    	 $.ajax({
 		  		type: 'post',
 		  		url: "/ajax/ajouterQuestion",

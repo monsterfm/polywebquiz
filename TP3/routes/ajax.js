@@ -5,6 +5,8 @@ var express = require('express');
 var router = express.Router();
 
 var Question = mongoose.model( 'Question',Question);
+var ExamenSchema = mongoose.model( 'Examen',ExamenSchema);
+var testRapide = mongoose.model( 'testRapide',testRapide);
 
 router.delete('/delete',function(req, res, next) {
     //var id = req.body.id;
@@ -165,6 +167,100 @@ router.post('/ajouterQuestion', function (req, res) {
     
 
  });
+
+/**
+ *
+ * Save Results of exams
+ *
+ */
+ router.post('/sauvegarderExamen', function (req, res) {
+    
+
+    var results = new ExamenSchema({
+        domainChoice: req.body.domainChoice,
+        examNumber: req.body.examNumber,
+        counter: req.body.counter,
+        nbCorrectAnswers: req.body.nbCorrectAnswers
+    });
+
+
+    results.save(function (err, question) {
+
+        if (err)  return console.error(err);
+        res.status(201).json(question); //201 for created
+    });
+});
+
+ /**
+ *
+ * Save Results of exams
+ *
+ */
+ router.post('/saveInDb', function (req, res) {
+    
+    var results = new testRapide({
+        nbCorrectAnswers: req.body.countCorrectAnswer,
+        totalCounter: req.body.countTotal
+    });
+
+
+    results.save(function (err, question) {
+        if (err)  return console.error(err);
+        res.status(201).json(question); //201 for created
+    });
+
+});
+
+
+ /**
+ *
+ * verify if answer is good
+ *
+ */
+ router.post('/getCorrectAnswer', function (req, res) {
+    Question.findById( req.body.idToFind, function ( err, question ){
+        if (err)  return console.error(err);
+        else{
+            if(question.Correctanswer == req.body.reponse)
+            res.send(true) ;
+        else
+            res.send(false) ;
+        }
+        
+    });
+});
+
+ /**
+ *
+ * get all results exams
+ *
+ */
+router.get('/resultsExams', function(req, res,next) {
+    ExamenSchema.find(function ( err, result, count ){
+        if(!err){
+            console.log(result)
+            res.json(result)
+        }
+            
+    });
+    
+});
+
+ /**
+ *
+ * get all test rapide 
+ *
+ */
+router.get('/resultsTest', function(req, res,next) {
+    testRapide.find(function ( err, result, count ){
+        if(!err){
+            console.log(result)
+            res.json(result)
+        }
+            
+    });
+    
+});
 
 router.get('/nbreQuestionsCSS',function(req,res){
 

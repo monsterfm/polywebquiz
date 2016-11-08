@@ -6,6 +6,9 @@ $(function(){
     var correct = -2;
     var answer = -3;
 
+    var idQuestion;
+    var correctAnswer;
+
     
 
     function handleDragStart(e) {
@@ -47,7 +50,33 @@ $(function(){
         this.innerHTML = e.dataTransfer.getData('text/html');
         $('[draggable]').attr('draggable', false);
 
-        if(answer == correct) {
+        var bodyRequest={
+            reponse: answer,
+            idToFind: idQuestion
+        }
+        var data = JSON.stringify(bodyRequest);
+        $.ajax({
+                type: 'post',
+                url: "/ajax/getCorrectAnswer",
+                data: data,
+                dataType: "json",
+                contentType: 'application/json',
+                success: function(data){ 
+                    if(data==true)
+                        correctAnswer = true;
+                    else
+                        correctAnswer = false;
+                },
+                error: function(xhr, textStatus, error){
+                    console.log(xhr.statusText);
+                    console.log(textStatus);
+                    console.log(error)
+                    alert("something went wrong")
+                },
+                 async: false //IMPORTANT ICI
+            });
+
+        if(correctAnswer) {
             var nbCorrectAnswers = parseInt(sessionStorage.getItem('nbCorrectAnswers') || 0) + 1;
             sessionStorage.setItem('nbCorrectAnswers', nbCorrectAnswers);
             //add style
@@ -90,7 +119,8 @@ $(function(){
     });
     function getRandomQuestionJS() {
             $.get('/ajax/questionJavaScript',function(data) {
-                    correct = data.Correctanswer;
+                    //correct = data.Correctanswer;
+                    idQuestion = data._id;
                     var counter = parseInt(sessionStorage.getItem('counter') || 1);
                     var examNumber = parseInt(sessionStorage.getItem('examNumber'));
 
@@ -110,7 +140,8 @@ $(function(){
      function getRandomQuestionHTML() {
         $.get('/ajax/questionHTML',function(data){
 
-                correct = data.Correctanswer;
+                //correct = data.Correctanswer;
+                idQuestion = data._id;
                     var counter = parseInt(sessionStorage.getItem('counter') || 1);
                     var examNumber = parseInt(sessionStorage.getItem('examNumber'));
 
@@ -127,7 +158,8 @@ $(function(){
  }
  function getRandomQuestionCSS() {
         $.get('/ajax/questionCSS',function(data) {
-                correct = data.Correctanswer;
+                //correct = data.Correctanswer;
+                idQuestion = data._id;
                     var counter = parseInt(sessionStorage.getItem('counter') || 1);
                     var examNumber = parseInt(sessionStorage.getItem('examNumber'));
 
