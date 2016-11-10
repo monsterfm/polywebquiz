@@ -1,0 +1,10 @@
+extends layout
+block stylecss
+  link(rel='stylesheet', type='text/css', href='stylesheets/style.css')
+  script(type='text/javascript', src='https://code.jquery.com/jquery-3.1.1.js')
+  script(type='text/javascript', src='/javascripts/resultatExamen.js')
+block content
+  main.mainContent
+        section#termineExam
+        form(action='tabBord')
+          button.buttonreturn Retour
