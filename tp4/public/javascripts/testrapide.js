@@ -1,6 +1,8 @@
 $(function(){
 
-
+    /****
+    ***Variables globales
+    ***/
     var correct = -2;
     var idQuestion;
     var answer = -3;
@@ -8,6 +10,9 @@ $(function(){
     var totalCounter = 0;
     var correctAnswer;
 
+    /****
+    ***Fonctions du drag and drop
+    ***/
     function handleDragStart(e) {
         e.dataTransfer.effectAllowed = 'move';
         e.dataTransfer.setData('text/html', $(this).html());
@@ -36,6 +41,11 @@ $(function(){
         });
     }
 
+
+    /****
+    ***Fonction gerant l'action du drop et faisant la confirmation de la 
+    ***bonne reponse avec le server
+    ***/
     function handleDrop(e) {
         if(e.stopPropagation)
             e.stopPropagation();
@@ -91,7 +101,10 @@ $(function(){
         return false;
     }
 
- function getRandomQuestion() {
+/****
+***Fonction pour obtenir une question aleatoire de la BD
+***/
+function getRandomQuestion() {
         $.get('/ajax/question',function(data) {
                 //correct = data.Correctanswer;
                 idQuestion = data._id;
@@ -110,9 +123,14 @@ $(function(){
                     , 'json');
  }
               
-     
-              getRandomQuestion();
-
+/****
+***Appel pour obtenir la 1er question du test
+***/   
+getRandomQuestion();
+    
+    /****
+    ***Ajout de listener pour le drag and drop
+    ***/
     $('#reponse').each(function() {
         this.addEventListener('dragenter', handleDragEnter, false);
         this.addEventListener('dragover', handleDragOver, false);
@@ -121,6 +139,9 @@ $(function(){
         this.addEventListener('dragend', handleDragEnd, false);
     });
 
+    /****
+    ***Fonction gerant le click du bouton suivant
+    ***/
     $('#suivantBtn').on('click',function(e) {
             counter = parseInt(sessionStorage.getItem('counter')) + 1;
             sessionStorage.setItem('counter', counter);
@@ -133,20 +154,14 @@ $(function(){
     });
     updateCurrentScoreTag();
 
+
+    /****
+    ***Fonction gerant le click du bouton retour et enregistrant les resultats du test
+    ***dans la BD
+    ***/
     $('#retourBtn').on('click',function(e) {
             var nbCorrectAnswers = sessionStorage.getItem("nbCorrectAnswers");
             var Counter = sessionStorage.getItem("counter");
-            /*if (localStorage.getItem("nbCorrectAnswersTotal") === null &&  localStorage.getItem("totalCounter") === null) {
-
-                localStorage.setItem("nbCorrectAnswersTotal",parseInt(nbCorrectAnswers));
-                localStorage.setItem("totalCounter", parseInt(Counter));
-            }
-            else{
-                
-                localStorage.setItem("nbCorrectAnswersTotal",parseInt(localStorage.getItem("nbCorrectAnswersTotal")) + parseInt(nbCorrectAnswers));
-                localStorage.setItem("totalCounter",parseInt(localStorage.getItem("totalCounter")) + parseInt(Counter));
-              
-            }*/
             var counters = {
                 countCorrectAnswer: nbCorrectAnswers,
                 countTotal: Counter
@@ -172,7 +187,9 @@ $(function(){
 
     });
 
-
+    /****
+    ***Fonction mettant a jours le score du joueur
+    ***/
     function updateCurrentScoreTag(){
         var note = sessionStorage.getItem('nbCorrectAnswers');
         var counter = sessionStorage.getItem('counter');

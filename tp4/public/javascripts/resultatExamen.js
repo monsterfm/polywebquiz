@@ -1,5 +1,8 @@
 $(function() {
 
+    /****
+    ***Variables globales
+    ***/
     var counter = sessionStorage.getItem('counter');
     var examNumber = sessionStorage.getItem('examNumber');
     var nbCorrectAnswers = sessionStorage.getItem('nbCorrectAnswers');
@@ -8,6 +11,9 @@ $(function() {
     var domainChoice = sessionStorage.getItem('domainChoice');
     addEntry();
 
+    /****
+    ***Fonction gerant le cas ou un examen est termnine
+    ***/
     $('#termineExam').html(resultatMsg);
     function displayResultScoreMsg(note){
       if(note>= 0 && note <25)
@@ -24,6 +30,10 @@ $(function() {
 
   return resultatMsg ;
     }
+
+    /****
+    ***Fonction enregistrant les resultats de l'examen dans la BD
+    ***/
     function addEntry() {
 
       var examenAajouter = {
@@ -52,20 +62,6 @@ $(function() {
               alert("something went wrong")
           }
       });
-        // Parse any JSON previously stored in allEntries
-        /*var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
-        if(existingEntries == null) 
-            existingEntries = [];
-        var entry = {domaine: domainChoice,
-                    nbQuestionsRep: counter-1,
-                     nbQuestionsExamen: examNumber,
-                     nbQuestionsCorrectes: nbCorrectAnswers,
-                     note: noteSur100};
-        localStorage.setItem("entry", JSON.stringify(entry));
-        // Save allEntries back to local storage
-        existingEntries.push(entry);
-        localStorage.setItem("allEntries", JSON.stringify(existingEntries));
-        return 0;*/
     }
 
 

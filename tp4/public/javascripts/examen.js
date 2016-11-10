@@ -1,5 +1,8 @@
 $(function(){
 
+    /****
+    ***Variables globales
+    ***/
     var domainChoice = sessionStorage.getItem('domainChoice');
     var examNumber = sessionStorage.getItem('examNumber');
 
@@ -10,7 +13,9 @@ $(function(){
     var correctAnswer;
 
     
-
+    /****
+    ***Fonctions du drag and drop
+    ***/
     function handleDragStart(e) {
         e.dataTransfer.effectAllowed = 'move';
         e.dataTransfer.setData('text/html', $(this).html());
@@ -39,6 +44,10 @@ $(function(){
         });
     }
 
+    /****
+    ***Fonction gerant l'action du drop et faisant la confirmation de la 
+    ***bonne reponse avec le server
+    ***/
     function handleDrop(e) {
         if(e.stopPropagation)
             e.stopPropagation();
@@ -73,7 +82,7 @@ $(function(){
                     console.log(error)
                     alert("something went wrong")
                 },
-                 async: false //IMPORTANT ICI
+                 async: false//synchrone pour attendre la confirmation que la reponse est bonne
             });
 
         if(correctAnswer) {
@@ -90,7 +99,10 @@ $(function(){
         sessionStorage.setItem('counter', counter);
         return false;
 }
-
+    
+    /****
+    ***Fonction gerant le click du bouton suivant
+    ***/
     $('#suivantBtn').on('click',function(e) {
         if((sessionStorage.getItem('counter') <= sessionStorage.getItem('examNumber'))) {
             updateCurrentScoreTag();
@@ -107,17 +119,32 @@ $(function(){
          }
     });
 
+
+    /****
+    ***Fonction gerant le click du bouton abandonner
+    ***/
     $('#abandonnerBtn').click(function(){ 
         sessionStorage.setItem('nbCorrectAnswers', 0);
          sessionStorage.setItem('counter', parseInt(sessionStorage.getItem('examNumber')) + 1);
          $('#abandonForm').trigger('submit');
     });
-     $('#retourBtn').click(function(){ 
+
+
+    /****
+    ***Fonction gerant le click du bouton retour
+    ***/
+    $('#retourBtn').click(function(){ 
         sessionStorage.setItem('nbCorrectAnswers', 0);
          sessionStorage.setItem('counter', parseInt(sessionStorage.getItem('examNumber')) + 1);
          $('#retourForm').trigger('submit');
     });
-     $('#saveBtn').click(function(){ 
+     
+
+    /****
+    ***Fonction gerant le click du bouton save, enregistre l'examen dans la BD
+    ***avec l'element toComplete a true
+    ***/
+    $('#saveBtn').click(function(){ 
          var counter = sessionStorage.getItem('counter');
          var examNumber = sessionStorage.getItem('examNumber');
          var nbCorrectAnswers = sessionStorage.getItem('nbCorrectAnswers');
@@ -148,9 +175,12 @@ $(function(){
           }
       });
     });
-    function getRandomQuestionJS() {
+    
+    /****
+    ***Fonction selectionnant une question JS a travers une requete AJAX
+    ***/
+      function getRandomQuestionJS() {
             $.get('/ajax/questionJavaScript',function(data) {
-                    //correct = data.Correctanswer;
                     idQuestion = data._id;
                     var counter = parseInt(sessionStorage.getItem('counter') || 1);
                     var examNumber = parseInt(sessionStorage.getItem('examNumber'));
@@ -168,10 +198,12 @@ $(function(){
                     , 'json');
      }
 
-     function getRandomQuestionHTML() {
+
+    /****
+    ***Fonction selectionnant une question HTML a travers une requete AJAX
+    ***/
+      function getRandomQuestionHTML() {
         $.get('/ajax/questionHTML',function(data){
-
-                //correct = data.Correctanswer;
                 idQuestion = data._id;
                     var counter = parseInt(sessionStorage.getItem('counter') || 1);
                     var examNumber = parseInt(sessionStorage.getItem('examNumber'));
@@ -187,9 +219,12 @@ $(function(){
                     }
                     , 'json');
  }
- function getRandomQuestionCSS() {
+
+    /****
+    ***Fonction selectionnant une question CSS a travers une requete AJAX
+    ***/
+      function getRandomQuestionCSS() {
         $.get('/ajax/questionCSS',function(data) {
-                //correct = data.Correctanswer;
                 idQuestion = data._id;
                     var counter = parseInt(sessionStorage.getItem('counter') || 1);
                     var examNumber = parseInt(sessionStorage.getItem('examNumber'));
@@ -206,6 +241,9 @@ $(function(){
                     , 'json');
  }
 
+    /****
+    ***Fonction gerant le cas d'un examen a completer
+    ***/
  function continueExamen() {
     $.get('/ajax/examenToContinue',function(data) {
         sessionStorage.clear();
@@ -222,9 +260,6 @@ $(function(){
               getRandomQuestionHTML();
         if(domainChoice =="CSS")
               getRandomQuestionCSS();
-
-
-
     }, 'json');
 
 
@@ -233,33 +268,37 @@ $(function(){
 
  }
 
-              
-     if(domainChoice =="JavaScript")
-              getRandomQuestionJS();
-    if(domainChoice =="HTML")
-              getRandomQuestionHTML();
-    if(domainChoice =="CSS")
-              getRandomQuestionCSS();
-    if(domainChoice =="Continuer")
-              continueExamen();
+  /****
+  ***Choix de la fonction a appleller en premier
+  ***/
+  if(domainChoice =="JavaScript")
+    getRandomQuestionJS();
+  if(domainChoice =="HTML")
+    getRandomQuestionHTML();
+  if(domainChoice =="CSS")
+    getRandomQuestionCSS();
+  if(domainChoice =="Continuer")
+    continueExamen();
 
-    $('#reponse').each(function() {
-        this.addEventListener('dragenter', handleDragEnter, false);
-        this.addEventListener('dragover', handleDragOver, false);
-        this.addEventListener('dragleave', handleDragLeave, false);
-        this.addEventListener('drop', handleDrop, false);
-        this.addEventListener('dragend', handleDragEnd, false);
-    });
+  /****
+  ***Ajout de listener pour le drag and drop
+  ***/
+  $('#reponse').each(function() {
+    this.addEventListener('dragenter', handleDragEnter, false);
+    this.addEventListener('dragover', handleDragOver, false);
+    this.addEventListener('dragleave', handleDragLeave, false);
+    this.addEventListener('drop', handleDrop, false);
+    this.addEventListener('dragend', handleDragEnd, false);
+  });
 
-    
-    function updateCurrentScoreTag(){
-        var score = sessionStorage.getItem('nbCorrectAnswers');
-        var examNumber = sessionStorage.getItem('examNumber');
-         $('.currentScore').text('Note courante :' + score +' / ' + examNumber);
-    }
-
-
-
+  /****
+  ***Fonction mettant a jours le score du joueur
+  ***/
+  function updateCurrentScoreTag(){
+    var score = sessionStorage.getItem('nbCorrectAnswers');
+    var examNumber = sessionStorage.getItem('examNumber');
+    $('.currentScore').text('Note courante :' + score +' / ' + examNumber);
+  }
 
 });
 

@@ -1,7 +1,15 @@
 function moyenneExamens(){
+
+    /****
+    ***Variables globales
+    ***/
     var moyenneExams=0;
     var nbrQuestionRapide=0;
     var nbrQuestionTotal=0;
+
+    /****
+    ***Appel AJAX afin de recuperer les resultats des examens de la BD
+    ***/
     $.ajax({
                 type: 'get',
                 url: "/ajax/resultsExams",
@@ -16,13 +24,13 @@ function moyenneExamens(){
                         moyenneExams=(moyenneExams/data.length);
                         $('#stats').text("Moyenne des examens: " + moyenneExams.toFixed(2) +" %");
                     }
-                    
-                        
                 }
-                
             });
 
 
+    /****
+    ***Appel AJAX afin de recuperer les resultats des tests rapide de la BD
+    ***/
     $.ajax({
                 type: 'get',
                 url: "/ajax/resultsTest",
@@ -42,27 +50,7 @@ function moyenneExamens(){
                 }
                 
             });
-        /*var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
-        var moyenneExams=0;
-        if(existingEntries == null) 
-            $('#stats').text("Aucun examens n'a encore ete fait!");
-        else{
-            for(i in existingEntries){
-                moyenneExams=moyenneExams+((parseInt(existingEntries[i].nbQuestionsCorrectes)/parseInt(existingEntries[i].nbQuestionsExamen))*100);
-            }
-            moyenneExams=(moyenneExams/existingEntries.length);
-            $('#stats').text("Moyenne des examens: " + moyenneExams.toFixed(2) +" %");
-           
-
-      }
-      if (localStorage.getItem("nbCorrectAnswersTotal") === null &&  localStorage.getItem("totalCounter") === null) 
-        $('#statstest').text("Statistiques test rapide : "+ 0 +"/ " + 0);
-      else
-        $('#statstest').text("Statistiques test rapide : "+ localStorage.getItem("nbCorrectAnswersTotal") +"/ " + localStorage.getItem("totalCounter"));
-      return 0;  */
-
-
-  }
+}
 
 
 
@@ -201,24 +189,6 @@ $(function() {
                     
                 }
             });
-
-
-
-
-
-        /*var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
-        if(existingEntries == null) 
-            $('#textDetails').text("Aucun examens n'a encore ete fait!");
-        else{
-            for(i in existingEntries){
-                var numeroExam=parseInt(i)+1;
-                $('#listeExams').append("<li>Examen "+ numeroExam +" - ("+ existingEntries[i].domaine +") : " +existingEntries[i].nbQuestionsCorrectes + "/"
-                    +existingEntries[i].nbQuestionsExamen +"</li><br>");
-            }
-        }
-    }); */
-
-
     });
 });
 

@@ -8,6 +8,8 @@ $(function(){
             'choix de réponse' + parseInt(numItems+1) + '<br/>' +
             '<input id="reponse'+numItems+'"  type="text" required />')
     });
+
+
     //vider btn
    $('#viderBtn').click(function(e) {
        
@@ -31,9 +33,6 @@ $(function(){
     });
   
 
-
-   
-    
     //ajouter question
      $('#ajouterForm').on('submit',function(e) {
      	//donnees de la question entrees par utilisateur
@@ -85,7 +84,4 @@ $(function(){
 	   		e.preventDefault();
         }
     });
-
-
-
 });
