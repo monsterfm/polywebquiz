@@ -1,0 +1,35 @@
+doctype html
+html
+  block link
+    -var selected = 'Accueil'; //default
+
+  -var menu = { 'Accueil': '/index', 'Tableau de bord': '/tabBord', 'Instructions': '/instructions', 'Ajouter question': '/ajouterQuestion' };
+  head
+    title Apprenez le web par des QUIZ!
+    meta(charset="UTF-8")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
+    script(src="node_modules/core-js/client/shim.min.js")
+    script(src="node_modules/zone.js/dist/zone.js")
+    script(src="node_modules/reflect-metadata/Reflect.js")
+    script(src="node_modules/systemjs/dist/system.src.js")
+
+    script(src="systemjs.config.js")
+    script System.import('app').catch(function(err){ console.error(err); });
+  body
+    header.mainHeader
+      block logo
+      nav
+        ul
+          each val, key in menu
+            li
+              if selected === key
+                li.active
+                  a.selected(href=val, title=key)= key
+              else
+                li
+                  a(href=val, title=key)= key
+      block content
+    footer.footer
+      p © copyright 2016, Hana Ben Arab (1691212) & Fazil Messaoud(1605802)
+
