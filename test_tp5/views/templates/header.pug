@@ -1,0 +1,6 @@
+header.mainHeader
+  img(src='images/bg.jpg')
+  nav
+    ul
+      li( *ngFor="let rubrique of menu", routerLinkActive="active")
+        a(routerLink="{{rubrique.path}}") {{rubrique.name}}

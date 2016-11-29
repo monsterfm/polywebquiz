@@ -1,0 +1,18 @@
+section#suivant
+  h1#domain.domain 
+  form#examenForm(action='/resultatExamen')
+    h1#enonce.enonce
+    ul#choixreponses.choixreponses
+    div#reponse
+    button#suivantBtn.button(type='submit' value='suivantBtn') Suivant
+section#Retour
+  form(action='/resultatExamen')
+    button#retourBtn.button Retour
+section#Abandon
+  form(action='resultatExamen')
+    button#abandonnerBtn.button Abandonner
+section#Save
+  form(action='tabBord')
+    button#saveBtn.button Sauvegarder
+section.currentScore
+  | Note Courante : -- / --

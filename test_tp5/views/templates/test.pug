@@ -1,0 +1,14 @@
+main.mainContent
+      h1#domain.domain
+      section#suivant
+        //les questions sont infinies
+        form#testForm(routerLink='/testRapide')
+          h1#enonce.enonce 
+          ul#choixreponses.choixreponses
+          div#reponse.reponse
+          button#suivantBtn.button(type='submit',value='suivantBtn') Suivant
+      section#retour
+        form(action='tabBord')
+          button#retourBtn.button Retour
+      section.currentScore 
+        | Note Courante : -- / --
