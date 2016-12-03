@@ -10,4 +10,4 @@ main.mainContent
           option( *ngFor="let domaine of domaines" value="{{domaine}}") {{domaine}}
         select#examNumber.examNumber(name="nombre",required, [(ngModel)]="examData.nombre")
           option( *ngFor="let examNumber of examNumbers" value="{{examNumber}}" ) {{examNumber}}
-        input#examenBtn.button(type='submit' value='Examen',(click)="saveExamData(f.value)")
+        input#examenBtn.button(routerLink='/examen' type='submit' value='Examen',(click)="saveExamData(f.value)")

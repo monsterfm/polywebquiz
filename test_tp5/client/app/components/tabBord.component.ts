@@ -17,8 +17,8 @@ export class TabBordComponent {
 		console.log(value);
 		sessionStorage.clear();
 
-        sessionStorage.setItem('domainChoice', this.examData.domainChoice);
-        sessionStorage.setItem('examNumber', this.examData.examNumber);
+        sessionStorage.setItem('domainChoice', value.domaine);
+        sessionStorage.setItem('examNumber', value.nombre);
         sessionStorage.setItem('nbCorrectAnswers', this.examData.nbCorrectAnswers.toString());
 
         //this.moyenneExamens();

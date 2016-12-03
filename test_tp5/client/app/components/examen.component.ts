@@ -20,31 +20,43 @@ export class ExamenComponent implements OnInit {
 
 	}
 	ngOnInit(){
-		this._questionService.getQuestion()
-			.subscribe(responseRandomQuestion =>this.question = responseRandomQuestion)
+		
+		if(sessionStorage.getItem('domainChoice') =="HTML"){
+			this.getHTMLQuestion();
+		}
+		else if(sessionStorage.getItem('domainChoice') =="CSS"){
+			this.getCSSQuestion();
+		}
+		else if(sessionStorage.getItem('domainChoice') =="JavaScript"){
+			this.getJSQuestion();
+		}
+		else{
+			this._questionService.getQuestion()
+			.subscribe(responseRandomQuestion =>this.question = responseRandomQuestion);
+		}
 		
 	}
-	// getTestQuestion(){
-	// 	this._questionService.getQuestion()
-	// 		.subscribe(responseRandomQuestion =>this.question = responseRandomQuestion)
+	//getTestQuestion(){
+	//	this._questionService.getQuestion()
+	//	.subscribe(responseRandomQuestion =>this.question = responseRandomQuestion)
 
-	// }
-	// getHTMLQuestion(){
+	//}
+	getHTMLQuestion(){
 
-	// 	this._questionService.getHTMLQuestion()
-	// 		.subscribe(responseRandomQuestion =>this.question = responseRandomQuestion)
+	 	this._questionService.getHTMLQuestion()
+	 		.subscribe(responseRandomQuestion =>this.question = responseRandomQuestion)
 
-	// }
-	// getCSSQuestion(){
-	// 	this._questionService.getCSSQuestion()
-	// 		.subscribe(responseRandomQuestion =>this.question = responseRandomQuestion)
+	 }
+	 getCSSQuestion(){
+	 	this._questionService.getCSSQuestion()
+	 		.subscribe(responseRandomQuestion =>this.question = responseRandomQuestion)
 
-	// }
+	 }
 
-	// getJSQuestion(){
-	// 	this._questionService.getJSQuestion()
-	// 		.subscribe(responseRandomQuestion =>this.question = responseRandomQuestion)
+	 getJSQuestion(){
+	 	this._questionService.getJSQuestion()
+	 		.subscribe(responseRandomQuestion =>this.question = responseRandomQuestion)
 
-	// }
+	 }
 
 }
