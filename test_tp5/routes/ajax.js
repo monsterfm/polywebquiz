@@ -130,9 +130,9 @@ router.get('/questionJavaScript', function(req, res,next) {
 
 router.post('/ajouterQuestion', function (req, res) {
     var validInput1= (!req.body.domaine || !req.body.question || !req.body.choices || !req.body.Correctanswer);
-    var validInput2 = (req.body.choices.length < 2  || req.body.Correctanswer < 0 || req.body.choices.length <= req.body.Correctanswer )
+    var validInput2 = (req.body.choices.length < 2  || req.body.Correctanswer < 0 || req.body.choices.length < req.body.Correctanswer )
     if (validInput1 || validInput2) {
-        res.status(400);
+        res.status(400).send("not valid Input");
         return;
     }
 
@@ -142,12 +142,14 @@ router.post('/ajouterQuestion', function (req, res) {
         choices: req.body.choices,
         Correctanswer: req.body.Correctanswer
     });
+    
 
 
     question.save(function (err, question) {
 
         if (err)  return console.error(err);
-        res.status(201).json(question); //201 for created
+        res.status(201).json(question);
+        //201 for created
     });
 });
 
@@ -162,6 +164,8 @@ router.post('/ajouterQuestion', function (req, res) {
     Question.count(condition,function(err,result){
         console.log("nbjs");
         console.log(result);
+        res.json(result);
+       
 
     })
     
@@ -269,6 +273,7 @@ router.get('/nbreQuestionsCSS',function(req,res){
     Question.count(condition,function(err,result){
          console.log("nbcss");
         console.log(result);
+        res.json(result);
 
 
     })
@@ -281,7 +286,8 @@ router.get('/nbreQuestionsHTML',function(req,res){
     var condition =  { domaine: { $in: ['HTML'] } };
     Question.count(condition,function(err,result){
          console.log("nbhtml");
-        console.log(result);
+         console.log(result);
+         res.json(result);
 
 
     })

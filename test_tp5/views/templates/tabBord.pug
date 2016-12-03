@@ -2,38 +2,12 @@ main.mainContent
     section.testrapide
       h1 Test rapide
       form#testRapideBtnForm(routerLink="/testRapide")
-        button#testRapideBtn.button Test rapide
+        button#testRapideBtn.button(type='submit',value='test',(click)="startTestRapide()") Test rapide
     section.examen
       h1 Examen
-      form#examenFormBtn(routerLink='/examen' method='get')
-        select#domainChoice.domainChoice(required)
-          option(value='HTML') HTML
-          option(value='CSS') CSS
-          option(value='JavaScript') JavaScript
-          option(value='Continuer') Continuer
-        select#examNumber.examNumber(required)
-          option(value='1') 1
-          option(value='2') 2
-          option(value='3') 3
-          option(value='4') 4
-          option(value='5') 5
-          option(value='6') 6
-          option(value='7') 7
-          option(value='8') 8
-        input#examenBtn.button(type='submit' value='Examen')
-    //- section.statistiques
-    //-   h1 Statistiques
-    //-   p#stats
-    //-     br
-    //-   p#statstest
-    //-     br
-    //-   a(href='#detailsBox')
-    //-     input.button(type='button', value='Details', id='Details')
-    //-   #detailsBox.modal
-    //-     p#textDetails Notes des examens: 
-    //-       ul#listeExams
-    //-         li#list
-    //-         script moyenneExamens();
-    //-   a.outside(href='#tabBord')
-    //-   br
-    //-   button#resetBtn.button Remise à zéro
+      form#examenFormBtn(action='/examen',method='post', #f="ngForm")
+        select#domainChoice.domainChoice(name="domaine",required,[(ngModel)]="examData.domaine")
+          option( *ngFor="let domaine of domaines" value="{{domaine}}") {{domaine}}
+        select#examNumber.examNumber(name="nombre",required, [(ngModel)]="examData.nombre")
+          option( *ngFor="let examNumber of examNumbers" value="{{examNumber}}" ) {{examNumber}}
+        input#examenBtn.button(type='submit' value='Examen',(click)="saveExamData(f.value)")

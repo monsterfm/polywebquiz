@@ -4,16 +4,17 @@ import { FormsModule}   from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule, JsonpModule } from '@angular/http';
 
-import { AppComponent } from './app.component';
-import {HeaderComponent} from "./header.component";
-import {FooterComponent} from "./footer.component";
-import {AccueilComponent} from "./accueil.component";
-import {InstructionsComponent} from "./instructions.component";
-import {TabBordComponent} from "./tabBord.component";
-import {AjouterQuestionComponent} from "./ajouterQuestion.component";
-import {TestRapideComponent} from "./testRapide.component";
-import {ExamenComponent} from "./examen.component";
-import {ResultatsExamenComponent} from "./resultatsExamen.component";
+import { AppComponent } from './components/app.component';
+import {HeaderComponent} from "./components/header.component";
+import {FooterComponent} from "./components/footer.component";
+import {AccueilComponent} from "./components/accueil.component";
+import {InstructionsComponent} from "./components/instructions.component";
+//import {StatsComponent} from "./components/stats.component";
+import {TabBordComponent} from "./components/tabBord.component";
+import {AjouterQuestionComponent} from "./components/ajouterQuestion.component";
+import {TestRapideComponent} from "./components/testRapide.component";
+import {ExamenComponent} from "./components/examen.component";
+import {ResultatsExamenComponent} from "./components/resultatsExamen.component";
 
 
 const routes: Routes = [

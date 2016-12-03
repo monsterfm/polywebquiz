@@ -1,33 +1,33 @@
 main.mainContent
  section#ajouter
-  form#ajouterForm(action='/ajax/ajouterQuestion' method="post" accept-charset="utf-8")
+  form#ajouterForm(action='/ajax/ajouterQuestion' method="post" accept-charset="utf-8" #f="ngForm")
     | Domaine: 
     br
-    select#domaine
-        option(value='HTML') HTML
-        option(value='CSS') CSS
-        option(value='JavaScript') JavaScript
+    select#domaine(name="domaine", required, [(ngModel)]="question.domaine")
+        option( *ngFor="let domaine of domaines" value="{{domaine}}" ) {{domaine}}
     br
     | Question: 
     br
-    input#Question(type='text' name='Question' required)
+    input#Question(type='text' ,name='question' ,required, [(ngModel)]="question.question")
     br
-    section#reponses
-        | Choix de réponse 1
-        br
-        input#reponse1(type='text' required)
-        br
-        | Choix de réponse 2
-        br
-        input#reponse2(type='text' required)
-        br
-        button#autreOption.button Ajouter un autre choix de réponses
-        br 
+    | Choix de réponse 1
+    br
+    input#reponse1(type='text' ,required ,name='response1', [(ngModel)]="question.choices[0].value")
+    br
+    | Choix de réponse 2
+    br
+    input#reponse2(type='text' ,required, name='response2', [(ngModel)]="question.choices[1].value")
+    br
+    | Choix de réponse 3
+    br
+    input#reponse3(type='text' ,required, name='response3', [(ngModel)]="question.choices[2].value")
+    br
+    button#autreOption.button Ajouter un autre choix de réponses
+    br 
     br
     | Reponse correcte: 
     br
-    //- TODO:ajouter controle utilisateur sur le numero de choix de rep entré
-    input#reponseCorrect(type='text' name='reponseCorrect' required)
+    input#reponseCorrect(type='text' name='goodres' ,required ,[(ngModel)]="question.Correctanswer")
     br
-    input#ajouterBtn.button(type='submit' value='Ajouter')
-input#viderBtn.button(type='submit' value='Vider BD')
+    input#ajouterBtn.button(type='submit' value='Ajouter',(click)="ajouterQuestion(f.value)")
+input#viderBtn.button(type='submit' value='Vider BD', (click)= "viderDB()")
