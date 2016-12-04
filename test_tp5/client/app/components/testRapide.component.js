@@ -15,14 +15,42 @@ var TestRapideComponent = (function () {
     function TestRapideComponent(_questionService) {
         this._questionService = _questionService;
         this.question = new Question_1.Question('id', 'domaine', 'question', ['choix1', 'choix2', 'choix3'], 'Correctanswer');
+        this.rep = {}; //valid for not usable response observer
+        this.draggable = true;
+        this.style = "solid";
     }
     TestRapideComponent.prototype.ngOnInit = function () {
         this.getTestQuestion();
     };
     TestRapideComponent.prototype.getTestQuestion = function () {
         var _this = this;
+        this.draggable = true; //shoud be draggable for next question
         this._questionService.getQuestion()
             .subscribe(function (responseRandomQuestion) { return _this.question = responseRandomQuestion; });
+    };
+    TestRapideComponent.prototype.onDragStart = function (event) {
+        event.dataTransfer.setData('text/plain', null);
+        if (this.draggable) {
+            this.dragStarted = event.target;
+        }
+    };
+    TestRapideComponent.prototype.onDragOver = function (event) {
+        if (this.draggable) {
+            event.preventDefault();
+        }
+    };
+    TestRapideComponent.prototype.isDraggable = function () {
+        return this.draggable;
+    };
+    TestRapideComponent.prototype.onDrop = function (event) {
+        if (this.draggable) {
+            event.preventDefault();
+            if (event.target.className == "reponse") {
+                this.dragStarted.parentNode.removeChild(this.dragStarted);
+                event.target.appendChild(this.dragStarted);
+                this.draggable = false;
+            }
+        }
     };
     TestRapideComponent = __decorate([
         core_1.Component({

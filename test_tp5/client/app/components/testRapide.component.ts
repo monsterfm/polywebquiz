@@ -13,6 +13,12 @@ import{Question} from '../services/Question'
 
 export class TestRapideComponent implements OnInit{
 	question = new Question('id','domaine','question',['choix1','choix2','choix3'],'Correctanswer');
+	rep={};//valid for not usable response observer
+	private draggable = true;
+	private dragStarted;
+	
+    
+    style = "solid";
 	constructor(private _questionService: QuestionService){
 
 	}
@@ -21,10 +27,41 @@ export class TestRapideComponent implements OnInit{
 		
 	}
 	getTestQuestion(){
+		this.draggable=true; //shoud be draggable for next question
 		this._questionService.getQuestion()
 			.subscribe(responseRandomQuestion =>this.question = responseRandomQuestion)
 
-	}
 
+	}
+	onDragStart(event){
+		event.dataTransfer.setData('text/plain',null)
+        if (this.draggable){
+            this.dragStarted = event.target;
+        }  
+    }
+    
+    onDragOver(event){
+        if (this.draggable){
+            event.preventDefault();
+        }
+    }
+    
+   
+    isDraggable(){
+        return this.draggable;
+    }
+    
+    onDrop(event){
+        if (this.draggable){
+            event.preventDefault();
+            if ( event.target.className == "reponse" ) {
+                this.dragStarted.parentNode.removeChild( this.dragStarted );
+                event.target.appendChild( this.dragStarted );
+                this.draggable = false;
+
+                //check here the response by ajax by subscribing here to the service :we should be able to get the good response of the question
+            }
+        }
+    }
 
 }

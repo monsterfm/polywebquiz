@@ -15,6 +15,7 @@ var QuestionService = (function () {
     function QuestionService(_http) {
         this._http = _http;
         this.basicUrl = '/ajax';
+        this.draggable = true;
     }
     //test questions
     QuestionService.prototype.getQuestion = function () {
@@ -56,6 +57,34 @@ var QuestionService = (function () {
     QuestionService.prototype.viderDB = function () {
         return this._http.delete(this.basicUrl + '/delete')
             .map(function (response) { return response.json(); });
+    };
+    QuestionService.prototype.onDragStart = function (event) {
+        if (this.draggable) {
+            this.dragged = event.target;
+            event.target.style.opacity = .5;
+        }
+    };
+    QuestionService.prototype.onDragEnd = function (event) {
+        event.target.style.opacity = "";
+    };
+    QuestionService.prototype.onDragOver = function (event) {
+        if (this.draggable) {
+            event.preventDefault();
+        }
+    };
+    QuestionService.prototype.onDragEnter = function (event) {
+        if (this.draggable) {
+            if (event.target.className == "dropzone") {
+                event.target.style.background = "#e8e8e8";
+            }
+        }
+    };
+    QuestionService.prototype.onDragLeave = function (event) {
+        if (this.draggable) {
+            if (event.target.className == "dropzone") {
+                event.target.style.background = "";
+            }
+        }
     };
     QuestionService = __decorate([
         core_1.Injectable(), 

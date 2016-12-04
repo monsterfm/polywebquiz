@@ -229,7 +229,15 @@ form > .buttonreturn{
     width:600px;
     
 }
-
+.reponse {
+    padding: 5px;
+    margin: 10px;
+    border: 5px solid black;
+    border-radius: 10px;
+    height:100px;
+    width:800px;
+    
+}
 
 .over {
     box-shadow: 0 5px 5px #black;
