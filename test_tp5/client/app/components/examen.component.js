@@ -20,7 +20,37 @@ var ExamenComponent = (function () {
     }
     ExamenComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this._questionService.getQuestion()
+        if (sessionStorage.getItem('domainChoice') == "HTML") {
+            this.getHTMLQuestion();
+        }
+        else if (sessionStorage.getItem('domainChoice') == "CSS") {
+            this.getCSSQuestion();
+        }
+        else if (sessionStorage.getItem('domainChoice') == "JavaScript") {
+            this.getJSQuestion();
+        }
+        else {
+            this._questionService.getQuestion()
+                .subscribe(function (responseRandomQuestion) { return _this.question = responseRandomQuestion; });
+        }
+    };
+    //getTestQuestion(){
+    //	this._questionService.getQuestion()
+    //	.subscribe(responseRandomQuestion =>this.question = responseRandomQuestion)
+    //}
+    ExamenComponent.prototype.getHTMLQuestion = function () {
+        var _this = this;
+        this._questionService.getHTMLQuestion()
+            .subscribe(function (responseRandomQuestion) { return _this.question = responseRandomQuestion; });
+    };
+    ExamenComponent.prototype.getCSSQuestion = function () {
+        var _this = this;
+        this._questionService.getCSSQuestion()
+            .subscribe(function (responseRandomQuestion) { return _this.question = responseRandomQuestion; });
+    };
+    ExamenComponent.prototype.getJSQuestion = function () {
+        var _this = this;
+        this._questionService.getJSQuestion()
             .subscribe(function (responseRandomQuestion) { return _this.question = responseRandomQuestion; });
     };
     ExamenComponent = __decorate([

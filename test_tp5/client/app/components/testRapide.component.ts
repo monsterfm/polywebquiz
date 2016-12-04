@@ -16,9 +16,7 @@ export class TestRapideComponent implements OnInit{
 	rep={};//valid for not usable response observer
 	private draggable = true;
 	private dragStarted;
-	
-    
-    style = "solid";
+
 	constructor(private _questionService: QuestionService){
 
 	}

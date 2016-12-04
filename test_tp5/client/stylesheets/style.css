@@ -96,7 +96,7 @@ nav li.active a{
 	height:auto;
 }*/
 
-.mainContent .stat{
+.statistiques{
 	display:inline-block;
 	float: right;
 	border-radius: 5px;
@@ -107,7 +107,7 @@ nav li.active a{
 	padding: 10px;
 	margin: 15px; 
 }
-
+ 
 #enonce{
 	font-size: 20px;
 }

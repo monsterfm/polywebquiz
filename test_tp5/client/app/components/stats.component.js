@@ -12,6 +12,13 @@ var core_1 = require('@angular/core');
 var StatsComponent = (function () {
     function StatsComponent() {
     }
+    StatsComponent.prototype.reset = function () {
+        localStorage.clear();
+        //moyenneExamens(); //du tp4 (changera le message du reset )
+        var stats = document.getElementById('stats');
+        console.log(stats); //prints your element
+        stats.innerHTML = "Aucun examen n'a encore ete fait!";
+    };
     StatsComponent = __decorate([
         core_1.Component({
             selector: 'stats',
