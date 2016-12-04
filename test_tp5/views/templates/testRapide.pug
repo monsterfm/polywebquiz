@@ -5,7 +5,7 @@ main.mainContent
     form#testForm(routerLink="/testRapide")
       h1#enonce.enonce {{question.question}}
       ul#choixreponses.choixreponses
-        li.choix(*ngFor = "let choice of question.choices",[draggable]="isDraggable()",(dragstart)="onDragStart($event)") {{choice}}
+        li.choix(*ngFor = "let choice of question.choices; let i=index",[draggable]="isDraggable()",(dragstart)="onDragStart($event, i)") {{choice}}
         div#reponse.reponse((dragover)="onDragOver($event)",(drop)="onDrop($event)")
       button#suivantBtn.button(type='submit',value='suivantBtn',(click)="getTestQuestion()") Suivant
   section#retour

@@ -14,7 +14,8 @@ import{Question} from '../services/Question'
 
 export class ExamenComponent implements OnInit {
 	question = new Question('id','domaine','question',['choix1','choix2','choix3'],'Correctanswer');
-	
+	private draggable = true;
+	private dragStarted;
 
 	constructor(private _questionService: QuestionService,private _examenService:ExamenService){
 
@@ -58,5 +59,36 @@ export class ExamenComponent implements OnInit {
 	 		.subscribe(responseRandomQuestion =>this.question = responseRandomQuestion)
 
 	 }
+
+	 onDragStart(event){
+		event.dataTransfer.setData('text/plain',null)
+        if (this.draggable){
+            this.dragStarted = event.target;
+        }  
+    }
+    
+    onDragOver(event){
+        if (this.draggable){
+            event.preventDefault();
+        }
+    }
+    
+   
+    isDraggable(){
+        return this.draggable;
+    }
+    
+    onDrop(event){
+        if (this.draggable){
+            event.preventDefault();
+            if ( event.target.className == "reponse" ) {
+                this.dragStarted.parentNode.removeChild( this.dragStarted );
+                event.target.appendChild( this.dragStarted );
+                this.draggable = false;
+
+                //check here the response by ajax by subscribing here to the service :we should be able to get the good response of the question
+            }
+        }
+    }
 
 }

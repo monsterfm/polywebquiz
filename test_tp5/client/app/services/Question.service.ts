@@ -58,6 +58,10 @@ export class QuestionService{
 		return this._http.delete(this.basicUrl+'/delete')
 				.map((response:Response)=>response.json());
 	}
+	ecrireBonneReponse(){
+		return this._http.delete(this.basicUrl+'/delete')
+				.map((response:Response)=>response.json());
+	}
 
 	onDragStart(event){
         if (this.draggable){

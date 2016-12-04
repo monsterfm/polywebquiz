@@ -16,6 +16,7 @@ export class TestRapideComponent implements OnInit{
 	rep={};//valid for not usable response observer
 	private draggable = true;
 	private dragStarted;
+    private selectedAnswer;
 	
     
     style = "solid";
@@ -33,10 +34,11 @@ export class TestRapideComponent implements OnInit{
 
 
 	}
-	onDragStart(event){
+	onDragStart(event, $i){
 		event.dataTransfer.setData('text/plain',null)
         if (this.draggable){
             this.dragStarted = event.target;
+            this.selectedAnswer=$i;
         }  
     }
     
@@ -60,6 +62,16 @@ export class TestRapideComponent implements OnInit{
                 this.draggable = false;
 
                 //check here the response by ajax by subscribing here to the service :we should be able to get the good response of the question
+                console.log(parseInt(this.question.Correctanswer));
+                console.log(this.selectedAnswer);
+                if(this.selectedAnswer==this.question.Correctanswer){
+                    var rep = document.getElementById("reponse");
+                    rep.style.border = "5px solid green";
+                }
+                else{
+                    var rep = document.getElementById("reponse");
+                    rep.style.border = "5px solid red";
+                }
             }
         }
     }

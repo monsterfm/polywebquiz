@@ -3,8 +3,8 @@ section#suivant
   form#examenForm(action='/resultatExamen')
     h1#enonce.enonce {{question.question}}
     ul#choixreponses.choixreponses
-      li.choix(*ngFor = "let choice of question.choices",draggable = "true") {{choice}}
-    div#reponse
+      li.choix(*ngFor = "let choice of question.choices",[draggable]="isDraggable()",(dragstart)="onDragStart($event)") {{choice}}
+    div#reponse.reponse((dragover)="onDragOver($event)",(drop)="onDrop($event)")
     button#suivantBtn.button(type='submit' value='suivantBtn') Suivant
 section#Retour
   form(action='/resultatExamen')
