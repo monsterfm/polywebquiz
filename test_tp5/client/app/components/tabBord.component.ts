@@ -19,7 +19,7 @@ export class TabBordComponent {
 
         sessionStorage.setItem('domainChoice', value.domaine);
         sessionStorage.setItem('examNumber', value.nombre);
-        sessionStorage.setItem('nbCorrectAnswers', this.examData.nbCorrectAnswers.toString());
+        sessionStorage.setItem('nbCorrectAnswers', "0");
 
         //this.moyenneExamens();
 	}

@@ -10,26 +10,57 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var Question_service_1 = require('../services/Question.service');
+var ResultatsTest_1 = require('../services/ResultatsTest');
 var StatsComponent = (function () {
     function StatsComponent(_questionService) {
         this._questionService = _questionService;
+        this.reponseTest = new ResultatsTest_1.ResultatsTest('nbCorrectAnswers', 'totalCounter');
+        this.reponseExam = {};
         this.resultTest = "";
+        this.nbrQuestionRapide = 0;
+        this.nbrQuestionTotal = 0;
     }
     StatsComponent.prototype.ngOnInit = function () {
+        this.getResultatTest();
+        this.getResultatExam();
+    };
+    StatsComponent.prototype.getResultatTest = function () {
         var _this = this;
         this._questionService.getResultsTest()
-            .subscribe(function (responseRandomQuestion) { return _this.reponse = responseRandomQuestion; });
-        console.log(this.reponse);
-        if (this.reponse == null || this.reponse.length == 0)
+            .subscribe(function (responseRandomQuestion) {
+            _this.reponseTest = responseRandomQuestion;
+            _this.afficherResultats();
+        });
+    };
+    StatsComponent.prototype.getResultatExam = function () {
+        var _this = this;
+        this._questionService.getResultsExams()
+            .subscribe(function (responseRandomQuestion) {
+            _this.reponseExam = responseRandomQuestion;
+            _this.afficherResultatsExam();
+        });
+    };
+    StatsComponent.prototype.afficherResultats = function () {
+        if (this.reponseTest.nbCorrectAnswers == "nbCorrectAnswers") {
             this.resultTest = "Statistiques test rapide : 0 / 0";
+            var statstest = document.getElementById('statstest');
+            console.log(statstest); //prints your element
+            statstest.innerHTML = "Statistiques test rapide : 0 / 0";
+        }
         else {
-            for (this.i in this.reponse) {
-                this.nbrQuestionRapide = this.nbrQuestionRapide + (parseInt(this.reponse[this.i].nbCorrectAnswers));
-                this.nbrQuestionTotal = this.nbrQuestionTotal + (parseInt(this.reponse[this.i].totalCounter));
+            for (this.i in this.reponseTest) {
+                this.nbrQuestionRapide = this.nbrQuestionRapide + (parseInt(this.reponseTest[this.i].nbCorrectAnswers));
+                this.nbrQuestionTotal = this.nbrQuestionTotal + (parseInt(this.reponseTest[this.i].totalCounter));
             }
             this.resultTest = "Statistiques test rapide : " + this.nbrQuestionRapide + "/ " + this.nbrQuestionTotal;
+            var statstest = document.getElementById('statstest');
+            console.log(statstest); //prints your element
+            statstest.innerHTML = this.resultTest;
         }
-        console.log(this.resultTest);
+    };
+    StatsComponent.prototype.afficherResultatsExam = function () {
+        //Todo:Afficher les resultats des examens
+        console.log(this.reponseExam);
     };
     StatsComponent.prototype.reset = function () {
         localStorage.clear();

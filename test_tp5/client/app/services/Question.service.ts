@@ -69,4 +69,9 @@ export class QuestionService{
 
 	}
 
+	getResultsExams(){
+		return this._http.get(this.basicUrl +'/resultsExams')
+				.map((response:Response)=>response.json());
+	}
+
 }

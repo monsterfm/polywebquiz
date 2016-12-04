@@ -16,6 +16,10 @@ var ExamenService = (function () {
         this._http = _http;
         this.basicUrl = '/ajax';
     }
+    ExamenService.prototype.sauvegarderExamen = function (body) {
+        return this._http.post(this.basicUrl + '/sauvegarderExamen', body)
+            .map(function (response) { return response; });
+    };
     ExamenService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])

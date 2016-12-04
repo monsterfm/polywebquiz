@@ -7,9 +7,9 @@ export class ExamenService{
 	
 	private basicUrl = '/ajax';
 	constructor(private _http : Http){}
-	// sauvegarderExamen(body){
-	// 	return this._http.post(this.basicUrl+'/sauvegarderExamen',body)
-	// 		.map((response:Response)=>response)
+	sauvegarderExamen(body){
+	 	return this._http.post(this.basicUrl+'/sauvegarderExamen',body)
+	 		.map((response:Response)=>response)
 
-	// }
+	 }
 }

@@ -13,13 +13,13 @@ var Question_service_1 = require('../services/Question.service');
 var Examen_service_1 = require('../services/Examen.service');
 var Question_1 = require('../services/Question');
 var ExamenComponent = (function () {
-    //private counter;
-    //private nbCorrectAnswers;
     function ExamenComponent(_questionService, _examenService) {
         this._questionService = _questionService;
         this._examenService = _examenService;
         this.question = new Question_1.Question('id', 'domaine', 'question', ['choix1', 'choix2', 'choix3'], 'Correctanswer');
         this.draggable = true;
+        this.i = 0;
+        this.re = {};
     }
     ExamenComponent.prototype.ngOnInit = function () {
         if (sessionStorage.getItem('domainChoice') == "HTML") {
@@ -38,7 +38,10 @@ var ExamenComponent = (function () {
         }
     };
     ExamenComponent.prototype.getQuestion = function () {
-        if (sessionStorage.getItem('domainChoice') == "HTML") {
+        if (parseInt(sessionStorage.getItem('examNumber')) == this.i) {
+            this.saveExam();
+        }
+        else if (sessionStorage.getItem('domainChoice') == "HTML") {
             this.getHTMLQuestion();
         }
         else if (sessionStorage.getItem('domainChoice') == "CSS") {
@@ -50,42 +53,60 @@ var ExamenComponent = (function () {
     };
     ExamenComponent.prototype.getHTMLQuestion = function () {
         var _this = this;
+        this.i = this.i + 1;
         var rep = document.getElementById("reponse");
         rep.style.border = "5px solid black";
-        //this.counter = parseInt(sessionStorage.getItem('counter') || 1);
-        //this.counter = parseInt(sessionStorage.getItem('counter')) + 1;
-        //sessionStorage.setItem('counter', this.counter);
+        this.counter = parseInt(sessionStorage.getItem('counter')) || 1;
+        this.counter = parseInt(sessionStorage.getItem('counter')) + 1;
+        sessionStorage.setItem('counter', this.counter);
         this.draggable = true;
         this._questionService.getHTMLQuestion()
             .subscribe(function (responseRandomQuestion) { return _this.question = responseRandomQuestion; });
     };
     ExamenComponent.prototype.getCSSQuestion = function () {
         var _this = this;
+        this.i = this.i + 1;
         var rep = document.getElementById("reponse");
         rep.style.border = "5px solid black";
-        //this.counter = parseInt(sessionStorage.getItem('counter') || 1);
-        //this.counter = parseInt(sessionStorage.getItem('counter')) + 1;
-        //sessionStorage.setItem('counter', this.counter);
+        this.counter = parseInt(sessionStorage.getItem('counter')) || 1;
+        this.counter = parseInt(sessionStorage.getItem('counter')) + 1;
+        sessionStorage.setItem('counter', this.counter);
         this.draggable = true;
         this._questionService.getCSSQuestion()
             .subscribe(function (responseRandomQuestion) { return _this.question = responseRandomQuestion; });
     };
     ExamenComponent.prototype.getJSQuestion = function () {
         var _this = this;
+        this.i = this.i + 1;
         var rep = document.getElementById("reponse");
         rep.style.border = "5px solid black";
-        //this.counter = parseInt(sessionStorage.getItem('counter') || 1);
-        //this.counter = parseInt(sessionStorage.getItem('counter')) + 1;
-        //sessionStorage.setItem('counter', this.counter);
+        this.counter = parseInt(sessionStorage.getItem('counter')) || 1;
+        this.counter = parseInt(sessionStorage.getItem('counter')) + 1;
+        sessionStorage.setItem('counter', this.counter);
         this.draggable = true;
         this._questionService.getJSQuestion()
             .subscribe(function (responseRandomQuestion) { return _this.question = responseRandomQuestion; });
     };
     ExamenComponent.prototype.retourExamen = function () {
+        this.saveExam();
+        //TODO:il faut changer de page ici aussi
     };
     ExamenComponent.prototype.abandonner = function () {
+        this.saveExam();
+        //TODO:il faut changer de page ici aussi
     };
     ExamenComponent.prototype.saveExam = function () {
+        var _this = this;
+        var counters = {
+            domainChoice: sessionStorage.getItem("domainChoice"),
+            examNumber: parseInt(sessionStorage.getItem("examNumber")),
+            counter: this.i,
+            nbCorrectAnswers: parseInt(sessionStorage.getItem("nbCorrectAnswers")),
+            toComplete: false,
+        };
+        this._examenService.sauvegarderExamen(counters)
+            .subscribe(function (responseRandomQuestion) { return _this.re = responseRandomQuestion; });
+        //TODO:il faut changer de page ici
     };
     ExamenComponent.prototype.onDragStart = function (event, $i) {
         event.dataTransfer.setData('text/plain', null);
@@ -109,12 +130,11 @@ var ExamenComponent = (function () {
                 this.dragStarted.parentNode.removeChild(this.dragStarted);
                 event.target.appendChild(this.dragStarted);
                 this.draggable = false;
-                //check here the response by ajax by subscribing here to the service :we should be able to get the good response of the question
-                //console.log(parseInt(this.question.Correctanswer));
-                //console.log(this.selectedAnswer);
                 if (this.selectedAnswer == this.question.Correctanswer) {
                     var rep = document.getElementById("reponse");
                     rep.style.border = "5px solid green";
+                    this.nbCorrectAnswers = (parseInt(sessionStorage.getItem('nbCorrectAnswers')) || 0) + 1;
+                    sessionStorage.setItem('nbCorrectAnswers', this.nbCorrectAnswers);
                 }
                 else {
                     var rep = document.getElementById("reponse");

@@ -66,6 +66,10 @@ var QuestionService = (function () {
         return this._http.get(this.basicUrl + '/resultsTest')
             .map(function (response) { return response.json(); });
     };
+    QuestionService.prototype.getResultsExams = function () {
+        return this._http.get(this.basicUrl + '/resultsExams')
+            .map(function (response) { return response.json(); });
+    };
     QuestionService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
