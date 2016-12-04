@@ -58,8 +58,12 @@ var QuestionService = (function () {
         return this._http.delete(this.basicUrl + '/delete')
             .map(function (response) { return response.json(); });
     };
-    QuestionService.prototype.ecrireBonneReponse = function () {
-        return this._http.delete(this.basicUrl + '/delete')
+    QuestionService.prototype.saveInDb = function (body) {
+        return this._http.post(this.basicUrl + '/saveInDb', body)
+            .map(function (response) { return response.json(); });
+    };
+    QuestionService.prototype.getResultsTest = function () {
+        return this._http.get(this.basicUrl + '/resultsTest')
             .map(function (response) { return response.json(); });
     };
     QuestionService = __decorate([

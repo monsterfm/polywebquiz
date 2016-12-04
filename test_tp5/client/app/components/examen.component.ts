@@ -17,8 +17,8 @@ export class ExamenComponent implements OnInit {
 	private draggable = true;
 	private dragStarted;
 	private selectedAnswer;
-    private counter;
-    private nbCorrectAnswers;
+    //private counter;
+    //private nbCorrectAnswers;
 
 	constructor(private _questionService: QuestionService,private _examenService:ExamenService){
 
@@ -56,9 +56,9 @@ export class ExamenComponent implements OnInit {
 	getHTMLQuestion(){
 		var rep = document.getElementById("reponse");
         rep.style.border = "5px solid black";
-		this.counter = parseInt(sessionStorage.getItem('counter') || 1);
-		this.counter = parseInt(sessionStorage.getItem('counter')) + 1;
-        sessionStorage.setItem('counter', this.counter);
+		//this.counter = parseInt(sessionStorage.getItem('counter') || 1);
+		//this.counter = parseInt(sessionStorage.getItem('counter')) + 1;
+        //sessionStorage.setItem('counter', this.counter);
         this.draggable=true;
 	 	this._questionService.getHTMLQuestion()
 	 		.subscribe(responseRandomQuestion =>this.question = responseRandomQuestion)
@@ -67,9 +67,9 @@ export class ExamenComponent implements OnInit {
 	 getCSSQuestion(){
 	 	var rep = document.getElementById("reponse");
         rep.style.border = "5px solid black";
-		this.counter = parseInt(sessionStorage.getItem('counter') || 1);
-		this.counter = parseInt(sessionStorage.getItem('counter')) + 1;
-        sessionStorage.setItem('counter', this.counter);
+		//this.counter = parseInt(sessionStorage.getItem('counter') || 1);
+		//this.counter = parseInt(sessionStorage.getItem('counter')) + 1;
+        //sessionStorage.setItem('counter', this.counter);
         this.draggable=true;
 	 	this._questionService.getCSSQuestion()
 	 		.subscribe(responseRandomQuestion =>this.question = responseRandomQuestion)
@@ -79,9 +79,9 @@ export class ExamenComponent implements OnInit {
 	 getJSQuestion(){
 	 	var rep = document.getElementById("reponse");
         rep.style.border = "5px solid black";
-		this.counter = parseInt(sessionStorage.getItem('counter') || 1);
-		this.counter = parseInt(sessionStorage.getItem('counter')) + 1;
-        sessionStorage.setItem('counter', this.counter);
+		//this.counter = parseInt(sessionStorage.getItem('counter') || 1);
+		//this.counter = parseInt(sessionStorage.getItem('counter')) + 1;
+        //sessionStorage.setItem('counter', this.counter);
         this.draggable=true;
 	 	this._questionService.getJSQuestion()
 	 		.subscribe(responseRandomQuestion =>this.question = responseRandomQuestion)
@@ -124,13 +124,13 @@ export class ExamenComponent implements OnInit {
                 this.draggable = false;
 
                 //check here the response by ajax by subscribing here to the service :we should be able to get the good response of the question
-                console.log(parseInt(this.question.Correctanswer));
-                console.log(this.selectedAnswer);
+                //console.log(parseInt(this.question.Correctanswer));
+                //console.log(this.selectedAnswer);
                 if(this.selectedAnswer==this.question.Correctanswer){
                     var rep = document.getElementById("reponse");
                     rep.style.border = "5px solid green";
-                    this.nbCorrectAnswers = parseInt(sessionStorage.getItem('nbCorrectAnswers') || 0) + 1;
-            		sessionStorage.setItem('nbCorrectAnswers', this.nbCorrectAnswers);
+                    //this.nbCorrectAnswers = parseInt(sessionStorage.getItem('nbCorrectAnswers') || 0) + 1;
+            		//sessionStorage.setItem('nbCorrectAnswers', this.nbCorrectAnswers);
                 }
                 else{
                     var rep = document.getElementById("reponse");

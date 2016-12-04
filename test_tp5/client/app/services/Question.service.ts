@@ -58,9 +58,15 @@ export class QuestionService{
 		return this._http.delete(this.basicUrl+'/delete')
 				.map((response:Response)=>response.json());
 	}
-	ecrireBonneReponse(){
-		return this._http.delete(this.basicUrl+'/delete')
+	saveInDb(body){
+		return this._http.post(this.basicUrl+'/saveInDb', body)
 				.map((response:Response)=>response.json());
+	}
+
+	getResultsTest(){
+		return this._http.get(this.basicUrl +'/resultsTest')
+				.map((response:Response)=>response.json());
+
 	}
 
 }

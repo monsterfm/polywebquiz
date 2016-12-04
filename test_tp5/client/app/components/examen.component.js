@@ -13,6 +13,8 @@ var Question_service_1 = require('../services/Question.service');
 var Examen_service_1 = require('../services/Examen.service');
 var Question_1 = require('../services/Question');
 var ExamenComponent = (function () {
+    //private counter;
+    //private nbCorrectAnswers;
     function ExamenComponent(_questionService, _examenService) {
         this._questionService = _questionService;
         this._examenService = _examenService;
@@ -50,9 +52,9 @@ var ExamenComponent = (function () {
         var _this = this;
         var rep = document.getElementById("reponse");
         rep.style.border = "5px solid black";
-        this.counter = parseInt(sessionStorage.getItem('counter') || 1);
-        this.counter = parseInt(sessionStorage.getItem('counter')) + 1;
-        sessionStorage.setItem('counter', this.counter);
+        //this.counter = parseInt(sessionStorage.getItem('counter') || 1);
+        //this.counter = parseInt(sessionStorage.getItem('counter')) + 1;
+        //sessionStorage.setItem('counter', this.counter);
         this.draggable = true;
         this._questionService.getHTMLQuestion()
             .subscribe(function (responseRandomQuestion) { return _this.question = responseRandomQuestion; });
@@ -61,9 +63,9 @@ var ExamenComponent = (function () {
         var _this = this;
         var rep = document.getElementById("reponse");
         rep.style.border = "5px solid black";
-        this.counter = parseInt(sessionStorage.getItem('counter') || 1);
-        this.counter = parseInt(sessionStorage.getItem('counter')) + 1;
-        sessionStorage.setItem('counter', this.counter);
+        //this.counter = parseInt(sessionStorage.getItem('counter') || 1);
+        //this.counter = parseInt(sessionStorage.getItem('counter')) + 1;
+        //sessionStorage.setItem('counter', this.counter);
         this.draggable = true;
         this._questionService.getCSSQuestion()
             .subscribe(function (responseRandomQuestion) { return _this.question = responseRandomQuestion; });
@@ -72,9 +74,9 @@ var ExamenComponent = (function () {
         var _this = this;
         var rep = document.getElementById("reponse");
         rep.style.border = "5px solid black";
-        this.counter = parseInt(sessionStorage.getItem('counter') || 1);
-        this.counter = parseInt(sessionStorage.getItem('counter')) + 1;
-        sessionStorage.setItem('counter', this.counter);
+        //this.counter = parseInt(sessionStorage.getItem('counter') || 1);
+        //this.counter = parseInt(sessionStorage.getItem('counter')) + 1;
+        //sessionStorage.setItem('counter', this.counter);
         this.draggable = true;
         this._questionService.getJSQuestion()
             .subscribe(function (responseRandomQuestion) { return _this.question = responseRandomQuestion; });
@@ -108,13 +110,11 @@ var ExamenComponent = (function () {
                 event.target.appendChild(this.dragStarted);
                 this.draggable = false;
                 //check here the response by ajax by subscribing here to the service :we should be able to get the good response of the question
-                console.log(parseInt(this.question.Correctanswer));
-                console.log(this.selectedAnswer);
+                //console.log(parseInt(this.question.Correctanswer));
+                //console.log(this.selectedAnswer);
                 if (this.selectedAnswer == this.question.Correctanswer) {
                     var rep = document.getElementById("reponse");
                     rep.style.border = "5px solid green";
-                    this.nbCorrectAnswers = parseInt(sessionStorage.getItem('nbCorrectAnswers') || 0) + 1;
-                    sessionStorage.setItem('nbCorrectAnswers', this.nbCorrectAnswers);
                 }
                 else {
                     var rep = document.getElementById("reponse");

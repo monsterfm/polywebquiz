@@ -25,7 +25,7 @@ var TestRapideComponent = (function () {
         var _this = this;
         var rep = document.getElementById("reponse");
         rep.style.border = "5px solid black";
-        this.counter = parseInt(sessionStorage.getItem('counter') || 1);
+        this.counter = parseInt(sessionStorage.getItem('counter')) || 1;
         this.counter = parseInt(sessionStorage.getItem('counter')) + 1;
         sessionStorage.setItem('counter', this.counter);
         //updateCurrentScoreTag();
@@ -34,15 +34,15 @@ var TestRapideComponent = (function () {
             .subscribe(function (responseRandomQuestion) { return _this.question = responseRandomQuestion; });
     };
     TestRapideComponent.prototype.retourTestRapide = function () {
-        this.nbCorrectAnswers = sessionStorage.getItem("nbCorrectAnswers");
-        this.counter = sessionStorage.getItem("counter");
+        var _this = this;
+        this.nbCorrectAnswers = parseInt(sessionStorage.getItem("nbCorrectAnswers"));
+        this.counter = parseInt(sessionStorage.getItem("counter"));
         var counters = {
             countCorrectAnswer: this.nbCorrectAnswers,
             countTotal: this.counter
         };
-        var data = JSON.stringify(counters);
-        console.log(data);
-        //saveIndb SUBSRIBE HERE
+        this._questionService.saveInDb(counters)
+            .subscribe(function (responseRandomQuestion) { return _this.question = responseRandomQuestion; });
     };
     TestRapideComponent.prototype.onDragStart = function (event, $i) {
         event.dataTransfer.setData('text/plain', null);
@@ -72,7 +72,7 @@ var TestRapideComponent = (function () {
                 if (this.selectedAnswer == this.question.Correctanswer) {
                     var rep = document.getElementById("reponse");
                     rep.style.border = "5px solid green";
-                    this.nbCorrectAnswers = parseInt(sessionStorage.getItem('nbCorrectAnswers') || 0) + 1;
+                    this.nbCorrectAnswers = (parseInt(sessionStorage.getItem('nbCorrectAnswers')) || 0) + 1;
                     sessionStorage.setItem('nbCorrectAnswers', this.nbCorrectAnswers);
                 }
                 else {

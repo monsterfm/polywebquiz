@@ -30,7 +30,7 @@ export class TestRapideComponent implements OnInit{
 	getTestQuestion(){
 		var rep = document.getElementById("reponse");
         rep.style.border = "5px solid black";
-		this.counter = parseInt(sessionStorage.getItem('counter') || 1);
+		this.counter = parseInt(sessionStorage.getItem('counter')) || 1;
 		this.counter = parseInt(sessionStorage.getItem('counter')) + 1;
         sessionStorage.setItem('counter', this.counter);
         //updateCurrentScoreTag();
@@ -41,15 +41,14 @@ export class TestRapideComponent implements OnInit{
 
 	}
 	retourTestRapide(){
-		this.nbCorrectAnswers = sessionStorage.getItem("nbCorrectAnswers");
-        this.counter = sessionStorage.getItem("counter");
+		this.nbCorrectAnswers = parseInt(sessionStorage.getItem("nbCorrectAnswers"));
+        this.counter = parseInt(sessionStorage.getItem("counter"));
             var counters = {
                 countCorrectAnswer: this.nbCorrectAnswers,
                 countTotal: this.counter
             }
-        var data = JSON.stringify(counters);
-        console.log(data);
-        //saveIndb SUBSRIBE HERE
+        this._questionService.saveInDb(counters)
+            .subscribe(responseRandomQuestion =>this.question = responseRandomQuestion)
 	}
 
 	onDragStart(event, $i){
@@ -85,7 +84,7 @@ export class TestRapideComponent implements OnInit{
                 if(this.selectedAnswer==this.question.Correctanswer){
                     var rep = document.getElementById("reponse");
                     rep.style.border = "5px solid green";
-                    this.nbCorrectAnswers = parseInt(sessionStorage.getItem('nbCorrectAnswers') || 0) + 1;
+                    this.nbCorrectAnswers = (parseInt(sessionStorage.getItem('nbCorrectAnswers')) || 0) + 1;
             		sessionStorage.setItem('nbCorrectAnswers', this.nbCorrectAnswers);
                 }
                 else{
