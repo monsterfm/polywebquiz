@@ -6,15 +6,15 @@ section#suivant
     ul#choixreponses.choixreponses
       li.choix(*ngFor = "let choice of question.choices",[draggable]="isDraggable()",(dragstart)="onDragStart($event)") {{choice}}
     div#reponse.reponse((dragover)="onDragOver($event)",(drop)="onDrop($event)")
-    button#suivantBtn.button(type='submit' value='suivantBtn') Suivant
+    button#suivantBtn.button(type='submit' value='suivantBtn',(click)="getQuestion()") Suivant
 section#Retour
   form(action='/resultatExamen')
-    button#retourBtn.button Retour
+    button#retourBtn.button(type='submit' value='retourBtn',(click)="retourExamen()") Retour
 section#Abandon
   form(action='resultatExamen')
-    button#abandonnerBtn.button Abandonner
+    button#abandonnerBtn.button(type='submit' value='abandonBtn',(click)="abandonner()") Abandonner
 section#Save
   form(action='tabBord')
-    button#saveBtn.button Sauvegarder
+    button#saveBtn.button(type='submit' value='saveBtn',(click)="saveExam()") Sauvegarder
 section.currentScore
-  | Note Courante : -- / --
+  | Note Courante : {{this.nbCorrectAnswers}} / {{this.counter}}

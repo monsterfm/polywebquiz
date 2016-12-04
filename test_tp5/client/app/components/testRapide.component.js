@@ -23,14 +23,32 @@ var TestRapideComponent = (function () {
     };
     TestRapideComponent.prototype.getTestQuestion = function () {
         var _this = this;
+        var rep = document.getElementById("reponse");
+        rep.style.border = "5px solid black";
+        this.counter = parseInt(sessionStorage.getItem('counter') || 1);
+        this.counter = parseInt(sessionStorage.getItem('counter')) + 1;
+        sessionStorage.setItem('counter', this.counter);
+        //updateCurrentScoreTag();
         this.draggable = true; //shoud be draggable for next question
         this._questionService.getQuestion()
             .subscribe(function (responseRandomQuestion) { return _this.question = responseRandomQuestion; });
     };
-    TestRapideComponent.prototype.onDragStart = function (event) {
+    TestRapideComponent.prototype.retourTestRapide = function () {
+        this.nbCorrectAnswers = sessionStorage.getItem("nbCorrectAnswers");
+        this.counter = sessionStorage.getItem("counter");
+        var counters = {
+            countCorrectAnswer: this.nbCorrectAnswers,
+            countTotal: this.counter
+        };
+        var data = JSON.stringify(counters);
+        console.log(data);
+        //saveIndb SUBSRIBE HERE
+    };
+    TestRapideComponent.prototype.onDragStart = function (event, $i) {
         event.dataTransfer.setData('text/plain', null);
         if (this.draggable) {
             this.dragStarted = event.target;
+            this.selectedAnswer = $i;
         }
     };
     TestRapideComponent.prototype.onDragOver = function (event) {
@@ -48,6 +66,19 @@ var TestRapideComponent = (function () {
                 this.dragStarted.parentNode.removeChild(this.dragStarted);
                 event.target.appendChild(this.dragStarted);
                 this.draggable = false;
+                //check here the response by ajax by subscribing here to the service :we should be able to get the good response of the question
+                console.log(parseInt(this.question.Correctanswer));
+                console.log(this.selectedAnswer);
+                if (this.selectedAnswer == this.question.Correctanswer) {
+                    var rep = document.getElementById("reponse");
+                    rep.style.border = "5px solid green";
+                    this.nbCorrectAnswers = parseInt(sessionStorage.getItem('nbCorrectAnswers') || 0) + 1;
+                    sessionStorage.setItem('nbCorrectAnswers', this.nbCorrectAnswers);
+                }
+                else {
+                    var rep = document.getElementById("reponse");
+                    rep.style.border = "5px solid red";
+                }
             }
         }
     };

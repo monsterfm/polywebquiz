@@ -63,37 +63,4 @@ export class QuestionService{
 				.map((response:Response)=>response.json());
 	}
 
-	onDragStart(event){
-        if (this.draggable){
-            this.dragged = event.target;
-            event.target.style.opacity = .5;
-        }  
-    }
-    
-    onDragEnd(event){
-             event.target.style.opacity = "";
-    }
-    
-    onDragOver(event){
-        if (this.draggable){
-            event.preventDefault();
-        }
-    }
-    
-    onDragEnter(event){
-        if (this.draggable){
-            if ( event.target.className == "dropzone" ) {
-                  event.target.style.background = "#e8e8e8";
-                  
-            }
-        }
-    }
-    
-    onDragLeave(event){
-        if (this.draggable){
-            if ( event.target.className == "dropzone" ) {
-                  event.target.style.background = "";
-            }
-        }
-    }
 }

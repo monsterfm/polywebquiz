@@ -12,6 +12,7 @@ export class StatsComponent {
 		let stats = document.getElementById('stats');
 		console.log(stats) //prints your element
 		stats.innerHTML="Aucun examen n'a encore ete fait!"
+		
 
 	}
 

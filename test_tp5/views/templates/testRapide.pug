@@ -10,7 +10,7 @@ main.mainContent
       button#suivantBtn.button(type='submit',value='suivantBtn',(click)="getTestQuestion()") Suivant
   section#retour
     form(routerLink="/tabBord")
-      button#retourBtn.button Retour
+      button#retourBtn.button(type='submit',value='returnBtn',(click)="retourTestRapide()") Retour
   section.currentScore 
-      | Note Courante : -- / --
+      | Note Courante : {{this.nbCorrectAnswers}} / {{this.counter}}
   stats

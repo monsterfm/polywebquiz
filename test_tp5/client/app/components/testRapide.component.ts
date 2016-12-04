@@ -17,9 +17,9 @@ export class TestRapideComponent implements OnInit{
 	private draggable = true;
 	private dragStarted;
     private selectedAnswer;
+    private counter;
+    private nbCorrectAnswers;
 	
-    
-    style = "solid";
 	constructor(private _questionService: QuestionService){
 
 	}
@@ -28,12 +28,30 @@ export class TestRapideComponent implements OnInit{
 		
 	}
 	getTestQuestion(){
+		var rep = document.getElementById("reponse");
+        rep.style.border = "5px solid black";
+		this.counter = parseInt(sessionStorage.getItem('counter') || 1);
+		this.counter = parseInt(sessionStorage.getItem('counter')) + 1;
+        sessionStorage.setItem('counter', this.counter);
+        //updateCurrentScoreTag();
 		this.draggable=true; //shoud be draggable for next question
 		this._questionService.getQuestion()
 			.subscribe(responseRandomQuestion =>this.question = responseRandomQuestion)
 
 
 	}
+	retourTestRapide(){
+		this.nbCorrectAnswers = sessionStorage.getItem("nbCorrectAnswers");
+        this.counter = sessionStorage.getItem("counter");
+            var counters = {
+                countCorrectAnswer: this.nbCorrectAnswers,
+                countTotal: this.counter
+            }
+        var data = JSON.stringify(counters);
+        console.log(data);
+        //saveIndb SUBSRIBE HERE
+	}
+
 	onDragStart(event, $i){
 		event.dataTransfer.setData('text/plain',null)
         if (this.draggable){
@@ -67,6 +85,8 @@ export class TestRapideComponent implements OnInit{
                 if(this.selectedAnswer==this.question.Correctanswer){
                     var rep = document.getElementById("reponse");
                     rep.style.border = "5px solid green";
+                    this.nbCorrectAnswers = parseInt(sessionStorage.getItem('nbCorrectAnswers') || 0) + 1;
+            		sessionStorage.setItem('nbCorrectAnswers', this.nbCorrectAnswers);
                 }
                 else{
                     var rep = document.getElementById("reponse");
