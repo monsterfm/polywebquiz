@@ -1,15 +1,17 @@
-    //-   h1 Statistiques
-    //-   p#stats
-    //-     br
-    //-   p#statstest
-    //-     br
-    //-   a(href='#detailsBox')
-    //-     input.button(type='button', value='Details', id='Details')
-    //-   #detailsBox.modal
-    //-     p#textDetails Notes des examens: 
-    //-       ul#listeExams
-    //-         li#list
-    //-         script moyenneExamens();
-    //-   a.outside(href='#tabBord')
-    //-   br
-    //-   button#resetBtn.button Remise à zéro
+
+section.statistiques
+    h2 Statistiques 
+    table
+        tr
+            td Statistiques des tests rapides
+            td(id="statstest") stats ici par interpolation(regarder moyenne examens stats.js tp4)
+        tr
+            td Moyenne des examens
+            td(id="stats") stats ici par interpolation(regarder moyenne examens stats.js tp4)
+        tr
+            td Détails des notes d'examens
+            td(id="x")
+                ul#listeExams
+                 li#list liste1 (voir le commentaire en bas)
+                  //- li#list(*ngFor = "let exam of exams") Examen {{numeroExam}} - {{data[i].domainChoice}}:{{nbCorreAnswers}} 
+    button#resetBtn.button((click)="reset()") Remise à zéro 

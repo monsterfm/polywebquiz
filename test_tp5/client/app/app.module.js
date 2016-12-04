@@ -18,7 +18,7 @@ var header_component_1 = require("./components/header.component");
 var footer_component_1 = require("./components/footer.component");
 var accueil_component_1 = require("./components/accueil.component");
 var instructions_component_1 = require("./components/instructions.component");
-//import {StatsComponent} from "./components/stats.component";
+var stats_component_1 = require("./components/stats.component");
 var tabBord_component_1 = require("./components/tabBord.component");
 var ajouterQuestion_component_1 = require("./components/ajouterQuestion.component");
 var testRapide_component_1 = require("./components/testRapide.component");
@@ -40,7 +40,7 @@ var AppModule = (function () {
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, router_1.RouterModule.forRoot(routes), http_1.HttpModule, http_1.JsonpModule],
-            declarations: [app_component_1.AppComponent, header_component_1.HeaderComponent, footer_component_1.FooterComponent, accueil_component_1.AccueilComponent, instructions_component_1.InstructionsComponent, tabBord_component_1.TabBordComponent, ajouterQuestion_component_1.AjouterQuestionComponent, testRapide_component_1.TestRapideComponent, examen_component_1.ExamenComponent, resultatsExamen_component_1.ResultatsExamenComponent],
+            declarations: [app_component_1.AppComponent, header_component_1.HeaderComponent, footer_component_1.FooterComponent, accueil_component_1.AccueilComponent, instructions_component_1.InstructionsComponent, tabBord_component_1.TabBordComponent, ajouterQuestion_component_1.AjouterQuestionComponent, testRapide_component_1.TestRapideComponent, examen_component_1.ExamenComponent, resultatsExamen_component_1.ResultatsExamenComponent, stats_component_1.StatsComponent],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

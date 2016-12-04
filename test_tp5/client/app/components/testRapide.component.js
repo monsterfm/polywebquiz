@@ -17,7 +17,6 @@ var TestRapideComponent = (function () {
         this.question = new Question_1.Question('id', 'domaine', 'question', ['choix1', 'choix2', 'choix3'], 'Correctanswer');
         this.rep = {}; //valid for not usable response observer
         this.draggable = true;
-        this.style = "solid";
     }
     TestRapideComponent.prototype.ngOnInit = function () {
         this.getTestQuestion();

@@ -11,3 +11,4 @@ main.mainContent
         select#examNumber.examNumber(name="nombre",required, [(ngModel)]="examData.nombre")
           option( *ngFor="let examNumber of examNumbers" value="{{examNumber}}" ) {{examNumber}}
         input#examenBtn.button(routerLink='/examen' type='submit' value='Examen',(click)="saveExamData(f.value)")
+    stats

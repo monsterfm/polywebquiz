@@ -7,7 +7,7 @@
  */
 
 
-.mainContent .testrapide,.mainContent .examen, .mainContent .statistiques {
+.mainContent .testrapide,.mainContent .examen, .statistiques {
   
   border-radius: 5px;
   background: #77A07E;
@@ -20,6 +20,7 @@
   display:inline-block;
 
 }
+
 /**
  *
  * dropdown list exam topic

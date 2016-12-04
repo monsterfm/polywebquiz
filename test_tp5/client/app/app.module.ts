@@ -9,7 +9,7 @@ import {HeaderComponent} from "./components/header.component";
 import {FooterComponent} from "./components/footer.component";
 import {AccueilComponent} from "./components/accueil.component";
 import {InstructionsComponent} from "./components/instructions.component";
-//import {StatsComponent} from "./components/stats.component";
+import {StatsComponent} from "./components/stats.component";
 import {TabBordComponent} from "./components/tabBord.component";
 import {AjouterQuestionComponent} from "./components/ajouterQuestion.component";
 import {TestRapideComponent} from "./components/testRapide.component";
@@ -31,7 +31,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [ BrowserModule,FormsModule,  RouterModule.forRoot(routes), HttpModule, JsonpModule ],
-  declarations: [ AppComponent, HeaderComponent, FooterComponent, AccueilComponent, InstructionsComponent,TabBordComponent,AjouterQuestionComponent,TestRapideComponent,ExamenComponent,ResultatsExamenComponent],
+  declarations: [ AppComponent, HeaderComponent, FooterComponent, AccueilComponent, InstructionsComponent,TabBordComponent,AjouterQuestionComponent,TestRapideComponent,ExamenComponent,ResultatsExamenComponent,StatsComponent],
   bootstrap: [ AppComponent ]
 })
 
